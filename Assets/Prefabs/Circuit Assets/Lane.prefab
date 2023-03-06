@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 5066991537788758528}
   - component: {fileID: 8613653701933115781}
   - component: {fileID: 7775282749683851809}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightBarrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 4405969777762807998}
   - component: {fileID: 8687255941694142325}
   - component: {fileID: 7571908401953415758}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftBarrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1715185502047801702}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
