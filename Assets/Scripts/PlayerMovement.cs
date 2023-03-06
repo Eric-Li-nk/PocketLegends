@@ -20,9 +20,11 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode jumpKey = KeyCode.Space;
     
     [Header("Ground Check")] 
-    public float playerHeight;
     public LayerMask whatIsGround;
-    
+    public float playerHeight;
+    [SerializeField]
+    private float distanceToGround;
+    [SerializeField]
     private bool grounded;
 
     [Header("Slope Handling")] 
@@ -49,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // Ground check
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + distanceToGround, whatIsGround);
 
         MyInput();  
         SpeedControl();
@@ -136,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool OnSlope()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + distanceToGround))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;
