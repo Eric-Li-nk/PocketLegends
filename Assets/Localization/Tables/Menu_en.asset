@@ -50,6 +50,10 @@ MonoBehaviour:
     m_Localized: Game over
     m_Metadata:
       m_Items: []
+  - m_Id: 12651619619168256
+    m_Localized: Choose Track
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
