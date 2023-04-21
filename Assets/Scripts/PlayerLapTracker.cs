@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,10 +12,16 @@ public class PlayerLapTracker : MonoBehaviour
     [SerializeField] private float currentLap;
     [SerializeField] private float currentCheckpoint;
     [SerializeField] private int totalCheckpoint;
+
+    public PlayerMovement playerMovement;
+
+    public GameObject cameraThirdPerson;
+    public GameObject cameraThirdPersonFly;
     
     private int outOfBound;
     private int checkpointLayer;
-
+    private int changeStateLayer;
+    
     public GameObject finishText;
     public TextMeshProUGUI checkpointTrackerText;
     
@@ -22,6 +29,7 @@ public class PlayerLapTracker : MonoBehaviour
     {
         outOfBound = LayerMask.NameToLayer("OutOfBound");
         checkpointLayer = LayerMask.NameToLayer("Checkpoint");
+        changeStateLayer = LayerMask.NameToLayer("ChangeState");
     }
 
     private void Start()
@@ -45,6 +53,21 @@ public class PlayerLapTracker : MonoBehaviour
             {
                 currentCheckpoint++;
                 checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
+            }
+        }
+        else if (other.gameObject.layer == changeStateLayer)
+        {
+            if (playerMovement.fly == true)
+            {
+                playerMovement.fly = false;
+                cameraThirdPersonFly.SetActive(false);
+                cameraThirdPerson.SetActive(true);
+            }
+            else
+            {
+                playerMovement.fly = true;
+                cameraThirdPersonFly.SetActive(true);
+                cameraThirdPerson.SetActive(false);
             }
         }
     }

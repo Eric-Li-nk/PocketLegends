@@ -6,10 +6,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
+    [Header("States")] 
+    public bool fly = false;
+    
     [Header("Movement")] 
     public float moveSpeed;
-
+    public float moveSpeedFly;
+    
     public float groundDrag;
+    public float airDrag;
 
     public float jumpForce;
     public float jumpCooldown;
@@ -59,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
         // Handle drag
         if (grounded || OnSlope())
             rb.drag = groundDrag;
+        else if (fly)
+            rb.drag = airDrag;
         else
             rb.drag = 0;
     }
@@ -86,7 +93,12 @@ public class PlayerMovement : MonoBehaviour
     {
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        if (OnSlope() && !exitingSlope)
+        if (fly)
+        {
+            rb.useGravity = false;
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
+        else if (OnSlope() && !exitingSlope)
         {
             rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
             if(rb.velocity.y > 0)
@@ -96,8 +108,9 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         else if (!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
-
-        rb.useGravity = !OnSlope();
+        
+        if(!fly)
+            rb.useGravity = !OnSlope();
     }
 
     private void SpeedControl()
@@ -109,13 +122,20 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            Vector3 faltVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            Vector3 faltVel;
+            if(!fly)
+                faltVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            else
+                faltVel = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
             
             // Limit velocity if needed
-            if (faltVel.magnitude > moveSpeed)
+            if (faltVel.magnitude > moveSpeedFly)
             {   
                 Vector3 limitedVel = faltVel.normalized * moveSpeed;
-                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+                if(!fly)
+                    rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+                else
+                    rb.velocity = new Vector3(limitedVel.x, limitedVel.y, limitedVel.z);
             }
         }
         
