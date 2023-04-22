@@ -54,6 +54,14 @@ MonoBehaviour:
     m_Localized: Choose Track
     m_Metadata:
       m_Items: []
+  - m_Id: 17999243482226688
+    m_Localized: Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17999406107975680
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

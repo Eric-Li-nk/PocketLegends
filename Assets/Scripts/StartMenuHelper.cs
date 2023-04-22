@@ -15,4 +15,9 @@ public class StartMenuHelper : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void FullScreen()
+    {
+        Screen.fullScreen = !Screen.fullScreen;
+    }
 }
