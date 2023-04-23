@@ -59,6 +59,10 @@ MonoBehaviour:
     m_Key: Resolution
     m_Metadata:
       m_Items: []
+  - m_Id: 18420754726772736
+    m_Key: Volume
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

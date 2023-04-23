@@ -62,6 +62,10 @@ MonoBehaviour:
     m_Localized: Resolution
     m_Metadata:
       m_Items: []
+  - m_Id: 18420754726772736
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
