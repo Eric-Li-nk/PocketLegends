@@ -27,10 +27,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")] 
     public LayerMask whatIsGround;
     public float playerHeight;
-    [SerializeField]
-    private float distanceToGround;
-    [SerializeField]
-    private bool grounded;
+    [SerializeField] private float distanceToGround;
+    [SerializeField] private bool grounded;
 
     [Header("Slope Handling")] 
     public float maxSlopeAngle;
@@ -95,12 +93,14 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
         if (fly)
         {
+            // When the player flies, gravity is disabled
             rb.useGravity = false;
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         }
         else if (OnSlope() && !exitingSlope)
         {
             rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
+            // Push the player down in order to keep the player on the slope
             if(rb.velocity.y > 0)
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force);
         }
@@ -123,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Vector3 faltVel;
+            
             if(!fly)
                 faltVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             else
@@ -156,6 +157,7 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = false;
     }
 
+    // Checks if the player is on a slope
     private bool OnSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + distanceToGround))
@@ -166,7 +168,8 @@ public class PlayerMovement : MonoBehaviour
 
         return false;
     }
-
+    
+    // Gets the angle of the slope by using normal
     private Vector3 GetSlopeMoveDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;

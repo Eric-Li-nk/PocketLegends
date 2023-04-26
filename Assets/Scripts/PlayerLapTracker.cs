@@ -34,30 +34,34 @@ public class PlayerLapTracker : MonoBehaviour
 
     private void Start()
     {
-        checkpointTrackerText.SetText(String.Format("Checkpoint 0/{0}",totalCheckpoint));
+        checkpointTrackerText.SetText(String.Format("Checkpoint 0/{0}", totalCheckpoint));
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // Resets the position of the player if he is out of bounds to the last checkpoint
         if(other.gameObject.layer == outOfBound)
             OutOfBounds();
         else if (other.gameObject.layer == checkpointLayer)
         {
             string checkpointName = other.gameObject.transform.parent.name;
+            // If it is the last checkpoint, ends the game
             if (checkpointName == "Finish" && currentCheckpoint + 1 == totalCheckpoint)
             {
                 checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{0}",totalCheckpoint));
                 EndGame();
             }
+            // If it is the next checkpoint, increment the current checkpoint by 1
             else if((currentCheckpoint+1).ToString() == checkpointName )
             {
                 currentCheckpoint++;
                 checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
             }
         }
+        // If the checkpoint is of the changeStateLayer, makes the player be able to fly if he wasn't flying else makes it no longer be able to fly
         else if (other.gameObject.layer == changeStateLayer)
         {
-            if (playerMovement.fly == true)
+            if (playerMovement.fly)
             {
                 playerMovement.fly = false;
                 cameraThirdPersonFly.SetActive(false);

@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 public class StartMenuHelper : MonoBehaviour
 {
-    
+    // UI elements
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
     public Toggle fullscreenToggle;
@@ -37,39 +37,47 @@ public class StartMenuHelper : MonoBehaviour
         LoadSettings();
     }
 
+    // Loads the scene named "Game"
+    // eventually needs to be changed to be able to play a chosen track
     public void Play()
     {
         SceneManager.LoadScene("Game");
     }
 
+    // Closes the game
     public void Quit()
     {
         Application.Quit();
     }
 
+    // Sets the game in fullscreen
     public void SetFullscreen(bool val)
     {
         Screen.fullScreen = val;
     }
 
+    // Sets the resolution
     public void SetResolution(int index)
     {
         currentResolutionIndex = index;
         Screen.SetResolution(resolutions[index].width, resolutions[index].height, Screen.fullScreenMode);
     }
 
+    // Sets the master volume
     public void SetVolume(float value)
     {
         currentVolume = value;
         audioMixer.SetFloat("MasterVolume", value);
     }
-
+    
+    // Sets the quality preset
     public void SetQuality(int index)
     {
         currentResolutionIndex = index;
         QualitySettings.SetQualityLevel(index);
     }
-
+    
+    // Saves settings set by the player in the PlayerPrefs class
     public void SaveSettings()
     {
         PlayerPrefs.SetInt("Resolution",
@@ -81,7 +89,10 @@ public class StartMenuHelper : MonoBehaviour
         PlayerPrefs.SetInt("Quality",
             qualityDropdown.value);
     }
-
+    
+    // Loads settings set by the player in the settings menu
+    // If a settings hasn't been set, a default value is set in the else statement
+    // By changing the value of the UI gameObject, onValueChanged is called each time, it is the reason why we we don't change the game's settings directly
     public void LoadSettings()
     {
         if (PlayerPrefs.HasKey("Resolution"))
@@ -101,7 +112,8 @@ public class StartMenuHelper : MonoBehaviour
         else
             qualityDropdown.value = qualities.Length - 1;
     }
-
+    
+    // Populates the resolution dropdown and selects the current resolution
     public void GenerateResolutionDropdown()
     {
         resolutionDropdown.ClearOptions();
@@ -119,7 +131,8 @@ public class StartMenuHelper : MonoBehaviour
         resolutionDropdown.AddOptions(resolutionOptions);
         resolutionDropdown.value = currentResolutionIndex;
     }
-
+    
+    // Populates the quality dropdown and selects the current quality preset
     public void GenerateQualityDropdown()
     {
         qualityDropdown.ClearOptions();
