@@ -21,11 +21,12 @@ public class StartMenuHelper : MonoBehaviour
     // Resolution dropdown variables
     private Resolution[] resolutions;
     private int currentResolutionIndex;
-    private List<string> options = new List<string>();
+    private List<string> resolutionOptions = new List<string>();
     
     // Quality dropdown variables
     private string[] qualities;
     private int currentQualityIndex;
+    private List<string> qualityOptions = new List<string>();
     
     private float currentVolume;
     
@@ -46,9 +47,9 @@ public class StartMenuHelper : MonoBehaviour
         Application.Quit();
     }
 
-    public void FullScreen()
+    public void SetFullscreen(bool val)
     {
-        Screen.fullScreen = !Screen.fullScreen;
+        Screen.fullScreen = val;
     }
 
     public void SetResolution(int index)
@@ -72,34 +73,25 @@ public class StartMenuHelper : MonoBehaviour
     public void SaveSettings()
     {
         PlayerPrefs.SetInt("Resolution",
-            currentResolutionIndex);
+            resolutionDropdown.value);
         PlayerPrefs.SetInt("Fullscreen",
-                    Convert.ToInt32(Screen.fullScreen));
+            Convert.ToInt32(Screen.fullScreen));
         PlayerPrefs.SetFloat("AudioVolume", 
-                    currentVolume);
+            currentVolume);
         PlayerPrefs.SetInt("Quality",
-            currentQualityIndex);
+            qualityDropdown.value);
     }
 
     public void LoadSettings()
     {
         if (PlayerPrefs.HasKey("Resolution"))
-        {
             resolutionDropdown.value = PlayerPrefs.GetInt("Resolution");
-            SetResolution(PlayerPrefs.GetInt("Resolution"));
-        }
         else
             resolutionDropdown.value = currentResolutionIndex;
         if (PlayerPrefs.HasKey("Fullscreen"))
-        {
-            Screen.fullScreen = Convert.ToBoolean(PlayerPrefs.GetInt("Fullscreen"));
             fullscreenToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("Fullscreen"));
-        }
         else
-        {
-            Screen.fullScreen = true;
             fullscreenToggle.isOn = true;
-        }
         if (PlayerPrefs.HasKey("AudioVolume"))
             audioSlider.value = PlayerPrefs.GetFloat("AudioVolume");
         else
@@ -118,15 +110,14 @@ public class StartMenuHelper : MonoBehaviour
         for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + " x " + resolutions[i].height + ", " + resolutions[i].refreshRate + " Hz";
-            options.Add(option);
+            resolutionOptions.Add(option);
             if (Screen.currentResolution.width == resolutions[i].width &&
                 Screen.currentResolution.height == resolutions[i].height)
                 currentResolutionIndex = i;
         }
         
-        resolutionDropdown.AddOptions(options);
+        resolutionDropdown.AddOptions(resolutionOptions);
         resolutionDropdown.value = currentResolutionIndex;
-        options.Clear();
     }
 
     public void GenerateQualityDropdown()
@@ -136,13 +127,12 @@ public class StartMenuHelper : MonoBehaviour
 
         for (int i = 0; i < qualities.Length; i++)
         {
-            options.Add(qualities[i]);
+            qualityOptions.Add(qualities[i]);
             if(QualitySettings.GetQualitySettings().name == qualities[i])
                 currentQualityIndex = i;
         }
 
-        qualityDropdown.AddOptions(options);
+        qualityDropdown.AddOptions(qualityOptions);
         qualityDropdown.value = currentQualityIndex;
-        options.Clear();
     }
 }
