@@ -37,11 +37,10 @@ public class StartMenuHelper : MonoBehaviour
         LoadSettings();
     }
 
-    // Loads the scene named "Game"
-    // eventually needs to be changed to be able to play a chosen track
-    public void Play()
+    // Loads the scene with the given variable name
+    public void LoadScene(string name)
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(name);
     }
 
     // Closes the game
