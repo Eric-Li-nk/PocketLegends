@@ -1,27 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerLapTracker : MonoBehaviour
+public class VehicleLapTracker : MonoBehaviour
 {
-
+    [Header("Ce Script n'est utilisé que temporairement le temps de faire un autre script plus grobal pour les trackages des checkpoints")]
     [SerializeField] private float currentLap;
     [SerializeField] private float currentCheckpoint;
     [SerializeField] private int totalCheckpoint;
 
-    public PlayerMovement playerMovement;
-
-    public GameObject cameraThirdPerson;
-    public GameObject cameraThirdPersonFly;
-    
     private int outOfBound;
     private int checkpointLayer;
-    private int changeStateLayer;
-    
+
     public GameObject finishMenu;
     public TextMeshProUGUI checkpointTrackerText;
     
@@ -29,7 +21,6 @@ public class PlayerLapTracker : MonoBehaviour
     {
         outOfBound = LayerMask.NameToLayer("OutOfBound");
         checkpointLayer = LayerMask.NameToLayer("Checkpoint");
-        changeStateLayer = LayerMask.NameToLayer("ChangeState");
     }
 
     private void Start()
@@ -56,22 +47,6 @@ public class PlayerLapTracker : MonoBehaviour
             {
                 currentCheckpoint++;
                 checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
-            }
-        }
-        // If the checkpoint is of the changeStateLayer, makes the player be able to fly if he wasn't flying else makes it no longer be able to fly
-        else if (other.gameObject.layer == changeStateLayer)
-        {
-            if (playerMovement.fly)
-            {
-                playerMovement.fly = false;
-                cameraThirdPersonFly.SetActive(false);
-                cameraThirdPerson.SetActive(true);
-            }
-            else
-            {
-                playerMovement.fly = true;
-                cameraThirdPersonFly.SetActive(true);
-                cameraThirdPerson.SetActive(false);
             }
         }
     }
