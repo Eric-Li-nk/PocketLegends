@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,18 +17,17 @@ public class StartMenuHelper : MonoBehaviour
     // UI elements
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
+    public TMP_Dropdown languageDropdown;
     public Toggle fullscreenToggle;
     public Slider audioSlider;
     public AudioMixer audioMixer;
     
     // Resolution dropdown variables
     private Resolution[] resolutions;
-    private int currentResolutionIndex;
     private List<string> resolutionOptions = new List<string>();
     
     // Quality dropdown variables
     private string[] qualities;
-    private int currentQualityIndex;
     private List<string> qualityOptions = new List<string>();
     
     private float currentVolume;
@@ -34,6 +36,7 @@ public class StartMenuHelper : MonoBehaviour
     {
         GenerateResolutionDropdown();
         GenerateQualityDropdown();
+        GenerateLanguageDropdown();
         LoadSettings();
     }
 
@@ -49,19 +52,30 @@ public class StartMenuHelper : MonoBehaviour
         Application.Quit();
     }
 
+    // Sets the resolution
+    public void SetResolution(int index)
+    {
+        Screen.SetResolution(resolutions[index].width, resolutions[index].height, Screen.fullScreenMode);
+    }
+    
+    // Sets the quality preset
+    public void SetQuality(int index)
+    {
+        QualitySettings.SetQualityLevel(index);
+    }
+    
+    // Sets the language
+    public void SetLanguage(int index)
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
+    }
+    
     // Sets the game in fullscreen
     public void SetFullscreen(bool val)
     {
         Screen.fullScreen = val;
     }
-
-    // Sets the resolution
-    public void SetResolution(int index)
-    {
-        currentResolutionIndex = index;
-        Screen.SetResolution(resolutions[index].width, resolutions[index].height, Screen.fullScreenMode);
-    }
-
+    
     // Sets the master volume
     public void SetVolume(float value)
     {
@@ -69,24 +83,19 @@ public class StartMenuHelper : MonoBehaviour
         audioMixer.SetFloat("MasterVolume", value);
     }
     
-    // Sets the quality preset
-    public void SetQuality(int index)
-    {
-        currentResolutionIndex = index;
-        QualitySettings.SetQualityLevel(index);
-    }
-    
     // Saves settings set by the player in the PlayerPrefs class
     public void SaveSettings()
     {
         PlayerPrefs.SetInt("Resolution",
             resolutionDropdown.value);
+        PlayerPrefs.SetInt("Quality",
+                    qualityDropdown.value);
+        PlayerPrefs.SetInt("Language",
+            languageDropdown.value);
         PlayerPrefs.SetInt("Fullscreen",
             Convert.ToInt32(Screen.fullScreen));
         PlayerPrefs.SetFloat("AudioVolume", 
             currentVolume);
-        PlayerPrefs.SetInt("Quality",
-            qualityDropdown.value);
     }
     
     // Loads settings set by the player in the settings menu
@@ -97,7 +106,15 @@ public class StartMenuHelper : MonoBehaviour
         if (PlayerPrefs.HasKey("Resolution"))
             resolutionDropdown.value = PlayerPrefs.GetInt("Resolution");
         else
-            resolutionDropdown.value = currentResolutionIndex;
+            resolutionDropdown.value = resolutions.Length - 1;
+        if (PlayerPrefs.HasKey("Quality"))
+            qualityDropdown.value = PlayerPrefs.GetInt("Quality");
+        else
+            qualityDropdown.value = qualities.Length - 1;
+        if (PlayerPrefs.HasKey("Language"))
+            languageDropdown.value = PlayerPrefs.GetInt("Language");
+        else
+            languageDropdown.value = 0;
         if (PlayerPrefs.HasKey("Fullscreen"))
             fullscreenToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("Fullscreen"));
         else
@@ -106,18 +123,16 @@ public class StartMenuHelper : MonoBehaviour
             audioSlider.value = PlayerPrefs.GetFloat("AudioVolume");
         else
             audioSlider.value = 0.0f;
-        if (PlayerPrefs.HasKey("Quality"))
-            qualityDropdown.value = PlayerPrefs.GetInt("Quality");
-        else
-            qualityDropdown.value = qualities.Length - 1;
+        
     }
     
     // Populates the resolution dropdown and selects the current resolution
-    public void GenerateResolutionDropdown()
+    private void GenerateResolutionDropdown()
     {
         resolutionDropdown.ClearOptions();
         resolutions = Screen.resolutions;
-
+        int currentResolutionIndex = 0;
+        
         for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + " x " + resolutions[i].height + ", " + resolutions[i].refreshRate + " Hz";
@@ -132,11 +147,12 @@ public class StartMenuHelper : MonoBehaviour
     }
     
     // Populates the quality dropdown and selects the current quality preset
-    public void GenerateQualityDropdown()
+    private void GenerateQualityDropdown()
     {
         qualityDropdown.ClearOptions();
         qualities = QualitySettings.names;
-
+        int currentQualityIndex = 0;
+        
         for (int i = 0; i < qualities.Length; i++)
         {
             qualityOptions.Add(qualities[i]);
@@ -146,5 +162,24 @@ public class StartMenuHelper : MonoBehaviour
 
         qualityDropdown.AddOptions(qualityOptions);
         qualityDropdown.value = currentQualityIndex;
+    }
+
+    // Populates the language dropdown and selects the current language
+    private void GenerateLanguageDropdown()
+    {
+        LocalizationSettings.InitializationOperation.WaitForCompletion();
+        
+        var languages = new List<TMP_Dropdown.OptionData>();
+        int currentLanguage = 0;
+        for (int i = 0; i < LocalizationSettings.AvailableLocales.Locales.Count; i++)
+        {
+            var language = LocalizationSettings.AvailableLocales.Locales[i];
+            if (LocalizationSettings.SelectedLocale == language)
+                currentLanguage = i;
+            languages.Add(new TMP_Dropdown.OptionData(language.name));
+        }
+        
+        languageDropdown.options = languages;
+        languageDropdown.value = currentLanguage;
     }
 }
