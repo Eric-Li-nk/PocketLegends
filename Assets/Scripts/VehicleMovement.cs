@@ -17,13 +17,16 @@ public class VehicleMovement : MonoBehaviour
     public Transform wheelLeftBack;
     public Transform wheelRightBack;
 
+    [Header("Acceleration")]
     public float motorTorque = 100f;
+    [Header("Maximum degree of turning")]
     public float maxSteer = 20f;
     private Rigidbody rb;
 
     public void Start()
     {
         rb = GetComponent<Rigidbody>();
+        // Keeps the vehicle from falling over
         rb.centerOfMass = centerOfMass.localPosition;
     }
 
@@ -37,9 +40,10 @@ public class VehicleMovement : MonoBehaviour
 
     public void Update()
     {
+        // Makes the wheels model turn
         var pos = Vector3.zero;
         var rot = Quaternion.identity;
-
+        
         wheelColliderLeftFront.GetWorldPose(out pos, out rot);
         wheelLeftFront.position = pos;
         wheelLeftFront.rotation = rot;
