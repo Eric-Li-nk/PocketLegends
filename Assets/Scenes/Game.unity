@@ -4956,6 +4956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1431600112}
   - component: {fileID: 1431600113}
+  - component: {fileID: 1431600116}
   - component: {fileID: 1431600114}
   - component: {fileID: 1431600115}
   m_Layer: 0
@@ -5011,14 +5012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5007f8ed205014ba5b36f66876f7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1431600116}
   fly: 0
-  moveSpeed: 7
-  moveSpeedFly: 15
-  groundDrag: 5
-  airDrag: 5
-  jumpForce: 7
-  jumpCooldown: 0.25
-  airMultiplier: 0.4
   jumpKey: 32
   whatIsGround:
     serializedVersion: 2
@@ -5048,6 +5043,27 @@ MonoBehaviour:
   cameraThirdPersonFly: {fileID: 639316529}
   finishMenu: {fileID: 375592312}
   checkpointTrackerText: {fileID: 187651196}
+--- !u!114 &1431600116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431600111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83f0da5c67f7e94fbef28cf4f9aac3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 7
+  maxFlySpeed: 15
+  jumpForce: 10
+  jumpCoolddown: 0.2
+  airMultiplier: 0.5
+  groundDrag: 5
+  airDrag: 1
+  currentLap: 0
+  currentCheckpoint: 0
 --- !u!1 &1500419923
 GameObject:
   m_ObjectHideFlags: 0

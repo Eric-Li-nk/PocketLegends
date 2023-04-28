@@ -5,20 +5,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    
+    public Player player;
+    
     [Header("States")] 
     public bool fly = false;
     
-    [Header("Movement")] 
-    public float moveSpeed;
-    public float moveSpeedFly;
+    // Movement variables
+    private float moveSpeed;
+    private float moveSpeedFly;
     
-    public float groundDrag;
-    public float airDrag;
+    private float groundDrag;
+    private float airDrag;
 
-    public float jumpForce;
-    public float jumpCooldown;
-    public float airMultiplier;
+    private float jumpForce;
+    private float jumpCooldown;
+    private float airMultiplier;
     private bool readyToJump;
 
     [Header("Keybinds")] 
@@ -43,6 +45,17 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
 
     private Rigidbody rb;
+
+    private void Awake()
+    {
+        moveSpeed = player.maxSpeed;
+        moveSpeedFly = player.maxFlySpeed;
+        groundDrag = player.groundDrag;
+        airDrag = player.airDrag;
+        jumpForce = player.jumpForce;
+        jumpCooldown = player.jumpCoolddown;
+        airMultiplier = player.airMultiplier;
+    }
 
     private void Start()
     {
