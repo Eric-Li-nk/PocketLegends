@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     
-    public Player player;
+    public Character player;
     
     [Header("States")] 
     public bool fly = false;
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         groundDrag = player.groundDrag;
         airDrag = player.airDrag;
         jumpForce = player.jumpForce;
-        jumpCooldown = player.jumpCoolddown;
+        jumpCooldown = player.jumpCooldown;
         airMultiplier = player.airMultiplier;
     }
 

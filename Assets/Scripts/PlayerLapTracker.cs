@@ -9,8 +9,8 @@ using UnityEngine;
 public class PlayerLapTracker : MonoBehaviour
 {
 
-    [SerializeField] private float currentLap;
-    [SerializeField] private float currentCheckpoint;
+    [SerializeField] private int currentLap;
+    [SerializeField] private int currentCheckpoint;
     [SerializeField] private int totalCheckpoint;
 
     public PlayerMovement playerMovement;
@@ -24,12 +24,18 @@ public class PlayerLapTracker : MonoBehaviour
     
     public GameObject finishMenu;
     public TextMeshProUGUI checkpointTrackerText;
+
+    private Character character;
+
+    public Transform checkpoints;
     
     private void Awake()
     {
         outOfBound = LayerMask.NameToLayer("OutOfBound");
         checkpointLayer = LayerMask.NameToLayer("Checkpoint");
         changeStateLayer = LayerMask.NameToLayer("ChangeState");
+        character = transform.GetComponent<Character>();
+        totalCheckpoint = GetTotalCheckpointCount();
     }
 
     private void Start()
@@ -46,7 +52,7 @@ public class PlayerLapTracker : MonoBehaviour
         {
             string checkpointName = other.gameObject.transform.parent.name;
             // If it is the last checkpoint, ends the game
-            if (checkpointName == "Finish" && currentCheckpoint + 1 == totalCheckpoint)
+            if (currentCheckpoint + 1 == totalCheckpoint)
             {
                 checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{0}",totalCheckpoint));
                 EndGame();
@@ -55,6 +61,7 @@ public class PlayerLapTracker : MonoBehaviour
             else if((currentCheckpoint+1).ToString() == checkpointName )
             {
                 currentCheckpoint++;
+                character.currentCheckpoint = currentCheckpoint;
                 checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
             }
         }
@@ -87,5 +94,13 @@ public class PlayerLapTracker : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0f;
         finishMenu.SetActive(true);
+    }
+
+    private int GetTotalCheckpointCount()
+    {
+        int total = -1;
+        foreach (Transform t in checkpoints)
+            total++;
+        return total;
     }
 }
