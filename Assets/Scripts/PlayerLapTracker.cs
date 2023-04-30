@@ -29,6 +29,9 @@ public class PlayerLapTracker : MonoBehaviour
 
     public Transform checkpoints;
     
+    // Temporary
+    public LeaderboardTracker lt;
+    
     private void Awake()
     {
         outOfBound = LayerMask.NameToLayer("OutOfBound");
@@ -94,6 +97,7 @@ public class PlayerLapTracker : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0f;
         finishMenu.SetActive(true);
+        lt.ShowLeaderboard();
     }
 
     private int GetTotalCheckpointCount()

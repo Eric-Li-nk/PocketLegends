@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IComparable<Character>
 {
     // This class is used to hold most of the player variables
 
@@ -25,5 +26,14 @@ public class Character : MonoBehaviour
     public int currentCheckpoint;
 
     public float distanceToNextCheckpoint;
+    public int rank;
+    
+    public int CompareTo(Character pl)
+    {
+        var res = pl.currentCheckpoint.CompareTo(currentCheckpoint);
+        if (res == 0)
+            res = distanceToNextCheckpoint.CompareTo(pl.distanceToNextCheckpoint);
+        return res;
+    }
 
 }

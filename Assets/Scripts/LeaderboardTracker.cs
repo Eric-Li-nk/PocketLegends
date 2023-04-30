@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LeaderboardTracker : MonoBehaviour
@@ -15,6 +16,10 @@ public class LeaderboardTracker : MonoBehaviour
 
     [Header("UI elements that tracks the player rank")]
     public TextMeshProUGUI playerRankText;
+
+    [Header("UI elements that makes the leaderboard")]
+    public GameObject leaderboardContent;
+    public RowUI rowUI;
     
     private Character[] characters;
     private Transform checkpoints;
@@ -34,6 +39,15 @@ public class LeaderboardTracker : MonoBehaviour
             Transform characterNextCheckpoint = GetCheckpointTransform(characterNextCheckpointNumber.ToString());
             character.distanceToNextCheckpoint = Vector3.Distance(character.transform.position, characterNextCheckpoint.position);
         }
+        // Sorts character list by their rank in the race track
+        Array.Sort(characters);
+        // Sets the characters rank
+        for(int i = 0; i < characters.Length; i++)
+        {
+            characters[i].rank = i + 1;
+            if (characters[i].isPlayer)
+                playerRankText.text = (i+1).ToString();
+        }
     }
 
     private Transform GetCheckpointTransform(string number)
@@ -43,4 +57,15 @@ public class LeaderboardTracker : MonoBehaviour
                 return t;
         return null;
     }
+
+    public void ShowLeaderboard()
+    {
+        foreach (Character character in characters)
+        {
+            var row = Instantiate(rowUI, leaderboardContent.transform).GetComponent<RowUI>();
+            row.name.text = character.name;
+            row.rank.text = character.rank.ToString();
+        }
+    }
+    
 }
