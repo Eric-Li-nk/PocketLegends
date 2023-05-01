@@ -14,9 +14,9 @@ public class SlowdownObjects : MonoBehaviour
             VehicleMovement vehicle = other.GetComponent<VehicleMovement>(); // Récupère le script VehicleMovement attaché à la voiture
             if (vehicle != null)
             {
-                vehicle.motorTorque /= 2f; // Divise la valeur de motorTorque par 2 pour ralentir la voiture
+                vehicle.motorTorque /= 3f; // Divise la valeur de motorTorque par 2 pour ralentir la voiture
                 gameObject.SetActive(false); // Désactive l'objet
-                StartCoroutine(RespawnObject()); // Lance la coroutine de réapparition de l'objet
+                StartCoroutine(RespawnObject()); // Lance la coroutine de réapparition de l'objet sur l'objet parent
             }
         }
     }
