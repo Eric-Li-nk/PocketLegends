@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VehicleMovement : MonoBehaviour
 {
+    [SerializeField] private Text SpeedText;
     public Transform centerOfMass;
     
     public WheelCollider wheelColliderLeftFront;
@@ -22,6 +24,8 @@ public class VehicleMovement : MonoBehaviour
     [Header("Maximum degree of turning")]
     public float maxSteer = 20f;
     private Rigidbody rb;
+    
+    
 
     public void Start()
     {
@@ -59,5 +63,7 @@ public class VehicleMovement : MonoBehaviour
         wheelColliderRightBack.GetWorldPose(out pos, out rot);
         wheelRightBack.position = pos;
         wheelRightBack.rotation = rot;
+
+        SpeedText.text = (rb.velocity.magnitude * 2.23693629f).ToString("0") + (" m/h");
     }
 }
