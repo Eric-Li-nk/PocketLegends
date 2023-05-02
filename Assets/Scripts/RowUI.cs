@@ -5,6 +5,6 @@ using UnityEngine;
 
 public class RowUI : MonoBehaviour
 {
-    public TextMeshProUGUI name;
+    public TextMeshProUGUI playerName;
     public TextMeshProUGUI rank;
 }
