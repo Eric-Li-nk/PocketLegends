@@ -63,7 +63,7 @@ public class LeaderboardTracker : MonoBehaviour
         foreach (Character character in characters)
         {
             var row = Instantiate(rowUI, leaderboardContent.transform).GetComponent<RowUI>();
-            row.name.text = character.name;
+            row.playerName.text = character.name;
             row.rank.text = character.rank.ToString();
         }
     }
