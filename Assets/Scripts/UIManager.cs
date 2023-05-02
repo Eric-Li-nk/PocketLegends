@@ -12,13 +12,14 @@ using UnityEngine.Localization.Settings;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartMenuHelper : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     // UI elements
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown languageDropdown;
     public Toggle fullscreenToggle;
+    public Toggle FPSToggle;
     public Slider audioSlider;
     public AudioMixer audioMixer;
     
@@ -31,6 +32,7 @@ public class StartMenuHelper : MonoBehaviour
     private List<string> qualityOptions = new List<string>();
     
     private float currentVolume;
+    private bool currentFPSToggle;
     
     private void Start()
     {
@@ -82,6 +84,11 @@ public class StartMenuHelper : MonoBehaviour
         currentVolume = value;
         audioMixer.SetFloat("MasterVolume", value);
     }
+
+    public void SetFPSToggle(bool val)
+    {
+        currentFPSToggle = val;
+    }
     
     // Saves settings set by the player in the PlayerPrefs class
     public void SaveSettings()
@@ -96,6 +103,8 @@ public class StartMenuHelper : MonoBehaviour
             Convert.ToInt32(Screen.fullScreen));
         PlayerPrefs.SetFloat("AudioVolume", 
             currentVolume);
+        PlayerPrefs.SetInt("FPS",
+            Convert.ToInt32(currentFPSToggle));
     }
     
     // Loads settings set by the player in the settings menu
@@ -123,7 +132,11 @@ public class StartMenuHelper : MonoBehaviour
             audioSlider.value = PlayerPrefs.GetFloat("AudioVolume");
         else
             audioSlider.value = 0.0f;
-        
+        if (PlayerPrefs.HasKey("FPS"))
+            FPSToggle.isOn = Convert.ToBoolean(PlayerPrefs.GetInt("FPS"));
+        else
+            FPSToggle.isOn = false;
+
     }
     
     // Populates the resolution dropdown and selects the current resolution
