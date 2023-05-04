@@ -138,6 +138,12 @@ public class UIManager : MonoBehaviour
             FPSToggle.isOn = false;
 
     }
+
+    public void ResetSettings()
+    {
+        PlayerPrefs.DeleteAll();
+        LoadSettings();
+    }
     
     // Populates the resolution dropdown and selects the current resolution
     private void GenerateResolutionDropdown()
