@@ -20,14 +20,16 @@ public class LeaderboardTracker : MonoBehaviour
     [Header("UI elements that makes the leaderboard")]
     public GameObject leaderboardContent;
     public RowUI rowUI;
-    
+
     private Character[] characters;
     private Transform checkpoints;
-
+    private int totalCheckpoint;
+    
     private void Awake()
     {
         characters = charactersList.GetComponentsInChildren<Character>();
         checkpoints = checkpointList.transform;
+        totalCheckpoint = GetTotalCheckpointCount();
     }
 
     private void Update()
@@ -35,7 +37,7 @@ public class LeaderboardTracker : MonoBehaviour
         // Updates characters distance to next checkpoint
         foreach(Character character in characters)
         {
-            int characterNextCheckpointNumber = character.currentCheckpoint + 1;
+            int characterNextCheckpointNumber = (character.currentCheckpoint == totalCheckpoint) ? 1 : character.currentCheckpoint + 1;
             Transform characterNextCheckpoint = GetCheckpointTransform(characterNextCheckpointNumber.ToString());
             character.distanceToNextCheckpoint = Vector3.Distance(character.transform.position, characterNextCheckpoint.position);
         }
@@ -66,6 +68,15 @@ public class LeaderboardTracker : MonoBehaviour
             row.playerName.text = character.name;
             row.rank.text = character.rank.ToString();
         }
+    }
+    
+    private int GetTotalCheckpointCount()
+    {
+        int total = -1;
+        foreach (Transform t in checkpoints)
+            if(t.gameObject.activeSelf)
+                total++;
+        return total;
     }
     
 }

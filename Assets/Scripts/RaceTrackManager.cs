@@ -16,10 +16,6 @@ public class RaceTrackManager : MonoBehaviour
     public void Awake()
     {
         charactersLapTracker = charactersList.GetComponentsInChildren<PlayerLapTracker>();
-    }
-
-    public void Start()
-    {
         if (isLoop)
         {
             foreach (PlayerLapTracker plt in charactersLapTracker)

@@ -5,13 +5,15 @@ using Cinemachine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 
 public class PlayerLapTracker : MonoBehaviour
 {
 
-    [SerializeField] private int currentLap;
-    [SerializeField] private int currentCheckpoint;
-    [SerializeField] private int totalCheckpoint;
+    [Serialize] private int currentLap;
+    [Serialize] private int currentCheckpoint;
+    [Serialize] private int totalCheckpoint;
 
     public PlayerMovement playerMovement;
 
@@ -20,11 +22,11 @@ public class PlayerLapTracker : MonoBehaviour
     
     private int outOfBound;
     private int checkpointLayer;
-    private int changeStateLayer;
-    
+
     public GameObject finishMenu;
     public TextMeshProUGUI checkpointTrackerText;
-
+    public TextMeshProUGUI lapTrackerText;
+    
     private Character character;
 
     public Transform checkpoints;
@@ -39,7 +41,6 @@ public class PlayerLapTracker : MonoBehaviour
     {
         outOfBound = LayerMask.NameToLayer("OutOfBound");
         checkpointLayer = LayerMask.NameToLayer("Checkpoint");
-        changeStateLayer = LayerMask.NameToLayer("ChangeState");
         character = transform.GetComponent<Character>();
         totalCheckpoint = GetTotalCheckpointCount();
     }
@@ -47,65 +48,55 @@ public class PlayerLapTracker : MonoBehaviour
     private void Start()
     {
         checkpointTrackerText.SetText(String.Format("Checkpoint 0/{0}", totalCheckpoint));
+        lapTrackerText.SetText(String.Format("Lap 0/{0}", totalLap));
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Resets the position of the player if he is out of bounds to the last checkpoint
-        if(other.gameObject.layer == outOfBound)
-            OutOfBounds();
-        else if (other.gameObject.layer == checkpointLayer)
+        if (other.gameObject.layer == checkpointLayer)
         {
-            string checkpointName = other.gameObject.transform.parent.name;
-            // If it is the last checkpoint, ends the game
-            if (currentCheckpoint + 1 == totalCheckpoint)
-            {
-                if (currentLap + 1 == totalLap)
-                {
-                    currentCheckpoint++;
-                    EndGame();
-                }
-                else
-                {
-                    currentCheckpoint = 0;
-                }
-                character.currentCheckpoint = currentCheckpoint;
-                currentLap++;
-                character.currentLap = currentLap;
-                checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
-            }
+            int checkpointName = Convert.ToInt32(other.gameObject.transform.parent.name);
+            int nextCheckpoint = GetNextCheckpoint();
             // If it is the next checkpoint, increment the current checkpoint by 1
-            else if((currentCheckpoint+1).ToString() == checkpointName )
+            if( nextCheckpoint == checkpointName )
             {
-                currentCheckpoint++;
+                currentCheckpoint = nextCheckpoint;
                 character.currentCheckpoint = currentCheckpoint;
                 checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
+                if (currentCheckpoint == totalCheckpoint)
+                {
+                    if (raceIsLoop)
+                    {
+                        checkpointTrackerText.SetText(String.Format("Checkpoint 0/{0}",totalCheckpoint));
+                        if (currentLap + 1 == totalLap)
+                        {
+                            checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
+                            EndGame();
+                        }
+                            
+                        currentLap++;
+                        character.currentLap = currentLap;
+                        lapTrackerText.SetText(String.Format("Lap {0}/{1}",currentLap, totalLap));
+                    }
+                    else
+                        EndGame();
+                }
             }
         }
-        // If the checkpoint is of the changeStateLayer, makes the player be able to fly if he wasn't flying else makes it no longer be able to fly
-        else if (other.gameObject.layer == changeStateLayer)
-        {
-            if (playerMovement.fly)
-            {
-                playerMovement.fly = false;
-                cameraThirdPersonFly.SetActive(false);
-                cameraThirdPerson.SetActive(true);
-            }
-            else
-            {
-                playerMovement.fly = true;
-                cameraThirdPersonFly.SetActive(true);
-                cameraThirdPerson.SetActive(false);
-            }
-        }
+        // Resets the position of the player if he is out of bounds to the last checkpoint
+        else if(other.gameObject.layer == outOfBound)
+            OutOfBounds();
     }
 
-    public void OutOfBounds()
+    private void OutOfBounds()
     {
-        transform.position = GameObject.Find("Checkpoints").transform.Find(currentCheckpoint.ToString()).position;
+        if (currentCheckpoint == 0 && currentLap == 0)
+            transform.position = GameObject.Find("Spawn").transform.position;
+        else
+            transform.position = GameObject.Find("Checkpoints").transform.Find(currentCheckpoint.ToString()).position;
     }
 
-    void EndGame()
+    private void EndGame()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -121,5 +112,12 @@ public class PlayerLapTracker : MonoBehaviour
             if(t.gameObject.activeSelf)
                 total++;
         return total;
+    }
+
+    private int GetNextCheckpoint()
+    {
+        if (currentCheckpoint == totalCheckpoint)
+            return 1;
+        return currentCheckpoint + 1;
     }
 }
