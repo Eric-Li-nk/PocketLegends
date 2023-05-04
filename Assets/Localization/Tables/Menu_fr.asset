@@ -78,6 +78,10 @@ MonoBehaviour:
     m_Localized: Nom
     m_Metadata:
       m_Items: []
+  - m_Id: 22265755263352832
+    m_Localized: "R\xE9initialiser"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

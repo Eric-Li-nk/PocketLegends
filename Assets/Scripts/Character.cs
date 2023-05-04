@@ -30,9 +30,11 @@ public class Character : MonoBehaviour, IComparable<Character>
     
     public int CompareTo(Character pl)
     {
-        var res = pl.currentCheckpoint.CompareTo(currentCheckpoint);
+        var res = pl.currentLap.CompareTo(currentLap);
         if (res == 0)
-            res = distanceToNextCheckpoint.CompareTo(pl.distanceToNextCheckpoint);
+            res = pl.currentCheckpoint.CompareTo(currentCheckpoint);
+            if (res == 0)
+                res = distanceToNextCheckpoint.CompareTo(pl.distanceToNextCheckpoint);
         return res;
     }
 

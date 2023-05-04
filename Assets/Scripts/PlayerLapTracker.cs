@@ -31,6 +31,9 @@ public class PlayerLapTracker : MonoBehaviour
     
     // Temporary
     public LeaderboardTracker lt;
+
+    public bool raceIsLoop = false;
+    public int totalLap;
     
     private void Awake()
     {
@@ -57,8 +60,19 @@ public class PlayerLapTracker : MonoBehaviour
             // If it is the last checkpoint, ends the game
             if (currentCheckpoint + 1 == totalCheckpoint)
             {
-                checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{0}",totalCheckpoint));
-                EndGame();
+                if (currentLap + 1 == totalLap)
+                {
+                    currentCheckpoint++;
+                    EndGame();
+                }
+                else
+                {
+                    currentCheckpoint = 0;
+                }
+                character.currentCheckpoint = currentCheckpoint;
+                currentLap++;
+                character.currentLap = currentLap;
+                checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
             }
             // If it is the next checkpoint, increment the current checkpoint by 1
             else if((currentCheckpoint+1).ToString() == checkpointName )
@@ -104,7 +118,8 @@ public class PlayerLapTracker : MonoBehaviour
     {
         int total = -1;
         foreach (Transform t in checkpoints)
-            total++;
+            if(t.gameObject.activeSelf)
+                total++;
         return total;
     }
 }
