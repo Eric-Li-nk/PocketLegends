@@ -2,7 +2,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "Player",
+            "name": "PlayerControl",
             "id": "8451c3c2-a0e3-40ff-8cc5-e022266b0818",
             "actions": [
                 {
@@ -25,12 +25,12 @@
                 },
                 {
                     "name": "Look",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "6a1eca50-9013-4a84-95d4-5e9ad05d600c",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Change Perspective",
@@ -133,22 +133,22 @@
                 },
                 {
                     "name": "",
-                    "id": "b5fffc9a-a2e6-45ff-8c97-348bd880af94",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "b185511a-3ac2-4684-996e-fc2cc8e1fb13",
+                    "path": "<Pointer>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "Keyboard",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b185511a-3ac2-4684-996e-fc2cc8e1fb13",
-                    "path": "<Mouse>/delta",
+                    "id": "b5fffc9a-a2e6-45ff-8c97-348bd880af94",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Gamepad",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false

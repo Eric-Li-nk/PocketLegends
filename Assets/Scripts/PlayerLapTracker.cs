@@ -15,11 +15,6 @@ public class PlayerLapTracker : MonoBehaviour
     [Serialize] private int currentCheckpoint;
     [Serialize] private int totalCheckpoint;
 
-    public PlayerMovement playerMovement;
-
-    public GameObject cameraThirdPerson;
-    public GameObject cameraThirdPersonFly;
-    
     private int outOfBound;
     private int checkpointLayer;
 

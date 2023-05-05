@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ChangePerspective : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject firstPersonCam;
+    [SerializeField] private GameObject thirdPersonCam;
 
-    // Update is called once per frame
-    void Update()
+    public void onChangePerspective(InputAction.CallbackContext context)
     {
-        
+        firstPersonCam.SetActive(!firstPersonCam.activeSelf);
+        thirdPersonCam.SetActive(!thirdPersonCam.activeSelf);
     }
 }
