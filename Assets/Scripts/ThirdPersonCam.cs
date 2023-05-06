@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +12,8 @@ public class ThirdPersonCam : MonoBehaviour
 
     public float rotationSpeed;
 
+    private bool reverseView = false; // variable pour inverser la vue
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -21,10 +22,16 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void Update()
     {
-        // rotate orientation
-        Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
+        // inverser la vue si la touche "o" est enfoncée
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            reverseView = !reverseView;
+        }
+
+        // déterminer la direction de la vue en fonction de la variable "reverseView"
+        Vector3 viewDir = reverseView ? -(player.position - new Vector3(transform.position.x, player.position.y, transform.position.z)) : player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
-        
+
         // rotate player object
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
