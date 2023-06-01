@@ -137,7 +137,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4947013897401907411}
   - component: {fileID: 78228790679284139}
-  - component: {fileID: 5903012433059562822}
   - component: {fileID: 7450089024679452104}
   m_Layer: 0
   m_Name: Main Camera
@@ -192,7 +191,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 7735
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -204,14 +203,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5903012433059562822
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048580596193919977}
-  m_Enabled: 1
 --- !u!114 &7450089024679452104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,7 +371,7 @@ MonoBehaviour:
     m_ActionId: 470698b3-3207-48ea-9723-89393adc94f7
     m_ActionName: PlayerControl/Change Perspective[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControl
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 78228790679284139}
@@ -676,7 +667,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129012629193608286}
-  m_LocalRotation: {x: 0.10859511, y: 0.000000019474621, z: -0.0000000014926703, w: 0.9940861}
+  m_LocalRotation: {x: 0.10859511, y: 0.000000019541256, z: -0.0000000014977777, w: 0.9940861}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1042,7 +1033,6 @@ GameObject:
   - component: {fileID: 8219498654938144311}
   - component: {fileID: 1150215878630107059}
   - component: {fileID: 2494598401208297541}
-  - component: {fileID: 4462968659550223773}
   - component: {fileID: 6166643714012797879}
   m_Layer: 0
   m_Name: ThirdPersonCamera
@@ -1203,22 +1193,6 @@ MonoBehaviour:
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
---- !u!114 &4462968659550223773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2458765690907619840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerIndex: -1
-  AutoEnableInputs: 1
-  XYAxis: {fileID: -5630151704836100654, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  ZAxis: {fileID: 0}
 --- !u!114 &6166643714012797879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,6 +1210,33 @@ MonoBehaviour:
   playerObj: {fileID: 1474842155052830450}
   rb: {fileID: 1440316652321422943}
   rotationSpeed: 7
+  horizontal:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  vertical:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  objOrientation:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &2528519123291298533
 GameObject:
   m_ObjectHideFlags: 3

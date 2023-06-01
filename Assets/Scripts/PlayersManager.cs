@@ -1,0 +1,45 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Cinemachine;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayersManager : MonoBehaviour
+{
+    [SerializeField] private List<PlayerInput> players = new List<PlayerInput>();
+    [SerializeField] private List<Transform> playerSpawns;
+    [SerializeField] private List<LayerMask> playerLayers;
+
+    private PlayerInputManager playerInputManager;
+    
+    private void Awake()
+    {
+        playerInputManager = FindObjectOfType<PlayerInputManager>();
+    }
+
+    private void OnEnable()
+    {
+        playerInputManager.onPlayerJoined += AddPlayer;
+    }
+    
+    private void OnDisable()
+    {
+        playerInputManager.onPlayerJoined -= AddPlayer;
+    }
+
+    public void AddPlayer(PlayerInput player)
+    {
+        players.Add(player);
+        player.transform.position = playerSpawns[players.Count - 1].position;
+
+        int layerToAdd = (int)Mathf.Log(playerLayers[players.Count - 1].value, 2);
+
+        foreach (var cam in player.GetComponentsInChildren<CinemachineFreeLook>(includeInactive:true))
+            cam.gameObject.layer = layerToAdd;
+        player.GetComponentInChildren<CinemachineVirtualCamera>(includeInactive:true).gameObject.layer = layerToAdd;
+        player.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
+        player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).horizontal = player.actions.FindAction("Look");
+        player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).objOrientation = player.actions.FindAction("Move");
+    }
+}
