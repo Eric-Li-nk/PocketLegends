@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown languageDropdown;
+    public TMP_Dropdown playerCount;
     public Toggle fullscreenToggle;
     public Toggle FPSToggle;
     public Slider audioSlider;
@@ -43,6 +44,7 @@ public class UIManager : MonoBehaviour
         GenerateQualityDropdown();
         GenerateLanguageDropdown();
         LoadSettings();
+        playerCount.value = gameData.playerCount - 1;
     }
 
     // Loads the scene with the given variable name
