@@ -627,7 +627,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_text
-      value: Track 3
+      value: Loop
+      objectReference: {fileID: 0}
+    - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_fontSize
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430725, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_Name
@@ -735,7 +739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Loop
+      value: Loop2
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1175,6 +1179,7 @@ MonoBehaviour:
   resolutionDropdown: {fileID: 266999432}
   qualityDropdown: {fileID: 646795704}
   languageDropdown: {fileID: 278634569}
+  playerCount: {fileID: 1321042480}
   fullscreenToggle: {fileID: 1326815830}
   FPSToggle: {fileID: 1190582898}
   audioSlider: {fileID: 825475704}
@@ -1421,7 +1426,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_text
-      value: Track 2
+      value: Car Test
       objectReference: {fileID: 0}
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_fontSize
@@ -1633,7 +1638,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_text
-      value: Loop2
+      value: Placeholder
+      objectReference: {fileID: 0}
+    - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_fontSize
+      value: 44.4
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430725, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_Name
@@ -1725,7 +1734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1733,7 +1742,7 @@ PrefabInstance:
       objectReference: {fileID: 578341914}
     - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1800,6 +1809,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1321042480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1597714926965957930, guid: 3ed69a05efa75c34095ac7476b00ac2d, type: 3}
+  m_PrefabInstance: {fileID: 212655930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1326815830 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4723395780657842706, guid: 2b86c9ceb319e1b4381cf43cd6950520, type: 3}
@@ -2394,11 +2414,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_text
-      value: Track 1
+      value: Movement Test
       objectReference: {fileID: 0}
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_fontSize
-      value: 50
+      value: 46.8
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430725, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_Name
