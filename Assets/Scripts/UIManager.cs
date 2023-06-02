@@ -23,6 +23,9 @@ public class UIManager : MonoBehaviour
     public Slider audioSlider;
     public AudioMixer audioMixer;
     
+    // Game data
+    public Game gameData;
+    
     // Resolution dropdown variables
     private Resolution[] resolutions;
     private List<string> resolutionOptions = new List<string>();
@@ -88,6 +91,11 @@ public class UIManager : MonoBehaviour
     public void SetFPSToggle(bool val)
     {
         currentFPSToggle = val;
+    }
+
+    public void SetPlayerCount(int val)
+    {
+        gameData.playerCount = val + 1;
     }
     
     // Saves settings set by the player in the PlayerPrefs class
