@@ -583,6 +583,7 @@ MonoBehaviour:
   FPSToggle: {fileID: 2184292096239778326}
   audioSlider: {fileID: 3248826746725576776}
   audioMixer: {fileID: 24100000, guid: 49f13bafd4580ec48b75ae2cb19a59cd, type: 2}
+  gameData: {fileID: 11400000, guid: 770a30614fa70f145a65d253580c03f6, type: 2}
 --- !u!1 &7825842013756639424
 GameObject:
   m_ObjectHideFlags: 0

@@ -88,6 +88,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 5629037845051342851
+  - m_Id: 32785755904458752
+    m_Localized: Nombre de joueurs
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

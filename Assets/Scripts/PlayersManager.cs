@@ -16,17 +16,19 @@ public class PlayersManager : MonoBehaviour
 
     public GameObject playerPrefab;
     public Transform characters;
+
+    [SerializeField] private Game gameData;
     private void Awake()
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         // Temporaire
-        AddPlayer(FindObjectOfType<PlayerInput>());
+        // AddPlayer(FindObjectOfType<PlayerInput>());
     }
 
     private void Start()
     {
-        PlayerInput.Instantiate(playerPrefab,characters);
-        PlayerInput.Instantiate(playerPrefab,characters);
+        for(int i = 0; i < gameData.playerCount; i++)
+            PlayerInput.Instantiate(playerPrefab,characters);
     }
 
     private void OnEnable()
