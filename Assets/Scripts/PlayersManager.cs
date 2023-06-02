@@ -16,6 +16,8 @@ public class PlayersManager : MonoBehaviour
     private void Awake()
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
+        // Temporaire
+        AddPlayer(FindObjectOfType<PlayerInput>());
     }
 
     private void OnEnable()

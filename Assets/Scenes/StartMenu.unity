@@ -1224,7 +1224,6 @@ GameObject:
   m_Component:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
-  - component: {fileID: 963194226}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1232,14 +1231,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &963194226
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -1305,6 +1296,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1346719599}
     m_Modifications:
+    - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_text
+      value: Loop2
+      objectReference: {fileID: 0}
     - target: {fileID: 314515797059430725, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_Name
       value: Track4
@@ -1394,9 +1389,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 578341914}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Loop2
+      objectReference: {fileID: 0}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
 --- !u!114 &1190582898 stripped
@@ -2159,7 +2174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StartMenuHelper, Assembly-CSharp
+      value: UIManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
