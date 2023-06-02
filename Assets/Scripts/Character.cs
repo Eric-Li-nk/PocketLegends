@@ -27,15 +27,24 @@ public class Character : MonoBehaviour, IComparable<Character>
 
     public float distanceToNextCheckpoint;
     public int rank;
-    
+
+    // Ajout des variables nécessaires pour le mouvement
+    public bool isGrounded; // Pour détecter si le bot est au sol
+    public Rigidbody rigidbody; // Pour gérer la physique du mouvement
+
     public int CompareTo(Character pl)
     {
         var res = pl.currentLap.CompareTo(currentLap);
         if (res == 0)
             res = pl.currentCheckpoint.CompareTo(currentCheckpoint);
-            if (res == 0)
-                res = distanceToNextCheckpoint.CompareTo(pl.distanceToNextCheckpoint);
+        if (res == 0)
+            res = distanceToNextCheckpoint.CompareTo(pl.distanceToNextCheckpoint);
         return res;
     }
 
+    private void Awake()
+    {
+        // Récupérer le composant Rigidbody attaché à l'objet
+        rigidbody = GetComponent<Rigidbody>();
+    }
 }
