@@ -15,6 +15,7 @@ public class RaceTrackManager : MonoBehaviour
     [Header("Gameobject which contains all characters")]
     public GameObject charactersList;
     private PlayerLapTracker[] charactersLapTracker;
+    private BotLapTracker[] botLapTracker;
     
     public LeaderboardTracker lt;
 
@@ -24,16 +25,22 @@ public class RaceTrackManager : MonoBehaviour
         lt.totalLap = totalLap;
         totalCheckpoint = GetTotalCheckpointCount();
         charactersLapTracker = charactersList.GetComponentsInChildren<PlayerLapTracker>();
+        botLapTracker = charactersList.GetComponentsInChildren<BotLapTracker>();
         foreach (PlayerLapTracker plt in charactersLapTracker)
-        {
             plt.totalCheckpoint = totalCheckpoint;
-        }
+        foreach (BotLapTracker blt in botLapTracker)
+            blt.totalCheckpoint = totalCheckpoint;
         if (isLoop)
         {
             foreach (PlayerLapTracker plt in charactersLapTracker)
             {
                 plt.totalLap = totalLap;
                 plt.raceIsLoop = true;
+            }
+            foreach (BotLapTracker blt in botLapTracker)
+            {
+                blt.totalLap = totalLap;
+                blt.raceIsLoop = true;
             }
         }
     }
