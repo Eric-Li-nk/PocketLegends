@@ -13,21 +13,16 @@ public class PlayerLapTracker : MonoBehaviour
 
     [Serialize] private int currentLap;
     [Serialize] private int currentCheckpoint;
-    [Serialize] private int totalCheckpoint;
+    public int totalCheckpoint;
 
     private int outOfBound;
     private int checkpointLayer;
-
-    public GameObject finishMenu;
+    
     public TextMeshProUGUI checkpointTrackerText;
     public TextMeshProUGUI lapTrackerText;
+    public TextMeshProUGUI rankText;
     
     private Character character;
-
-    public Transform checkpoints;
-    
-    // Temporary
-    public LeaderboardTracker lt;
 
     public bool raceIsLoop = false;
     public int totalLap;
@@ -37,13 +32,18 @@ public class PlayerLapTracker : MonoBehaviour
         outOfBound = LayerMask.NameToLayer("OutOfBound");
         checkpointLayer = LayerMask.NameToLayer("Checkpoint");
         character = transform.GetComponent<Character>();
-        totalCheckpoint = GetTotalCheckpointCount();
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(0.5f);
         checkpointTrackerText.SetText(String.Format("Checkpoint 0/{0}", totalCheckpoint));
         lapTrackerText.SetText(String.Format("Lap 0/{0}", totalLap));
+    }
+
+    private void Update()
+    {
+        rankText.text = character.rank.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -58,23 +58,14 @@ public class PlayerLapTracker : MonoBehaviour
                 currentCheckpoint = nextCheckpoint;
                 character.currentCheckpoint = currentCheckpoint;
                 checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
-                if (currentCheckpoint == totalCheckpoint)
+                if (currentCheckpoint == totalCheckpoint && raceIsLoop)
                 {
-                    if (raceIsLoop)
-                    {
-                        checkpointTrackerText.SetText(String.Format("Checkpoint 0/{0}",totalCheckpoint));
-                        if (currentLap + 1 == totalLap)
-                        {
-                            checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
-                            EndGame();
-                        }
-                            
-                        currentLap++;
-                        character.currentLap = currentLap;
-                        lapTrackerText.SetText(String.Format("Lap {0}/{1}",currentLap, totalLap));
-                    }
-                    else
-                        EndGame();
+                    checkpointTrackerText.SetText(String.Format("Checkpoint 0/{0}",totalCheckpoint));
+                    if (currentLap + 1 == totalLap)
+                        checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
+                    currentLap++;
+                    character.currentLap = currentLap;
+                    lapTrackerText.SetText(String.Format("Lap {0}/{1}",currentLap, totalLap));
                 }
             }
         }
@@ -89,24 +80,6 @@ public class PlayerLapTracker : MonoBehaviour
             transform.position = GameObject.Find("Spawn").transform.position;
         else
             transform.position = GameObject.Find("Checkpoints").transform.Find(currentCheckpoint.ToString()).position;
-    }
-
-    private void EndGame()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        Time.timeScale = 0f;
-        finishMenu.SetActive(true);
-        lt.ShowLeaderboard();
-    }
-
-    private int GetTotalCheckpointCount()
-    {
-        int total = -1;
-        foreach (Transform t in checkpoints)
-            if(t.gameObject.activeSelf)
-                total++;
-        return total;
     }
 
     private int GetNextCheckpoint()

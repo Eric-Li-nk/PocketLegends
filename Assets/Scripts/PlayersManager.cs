@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,12 +13,20 @@ public class PlayersManager : MonoBehaviour
     [SerializeField] private List<LayerMask> playerLayers;
 
     private PlayerInputManager playerInputManager;
-    
+
+    public GameObject playerPrefab;
+    public Transform characters;
     private void Awake()
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         // Temporaire
         AddPlayer(FindObjectOfType<PlayerInput>());
+    }
+
+    private void Start()
+    {
+        PlayerInput.Instantiate(playerPrefab,characters);
+        PlayerInput.Instantiate(playerPrefab,characters);
     }
 
     private void OnEnable()
