@@ -8,4 +8,6 @@ public class Game : ScriptableObject
     // Dans le future, personnage choisie par le joueur
     
     public int playerCount;
+
+    public List<string> playerName;
 }

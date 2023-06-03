@@ -18,15 +18,11 @@ public class UIManager : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown languageDropdown;
-    public TMP_Dropdown playerCount;
     public Toggle fullscreenToggle;
     public Toggle FPSToggle;
     public Slider audioSlider;
     public AudioMixer audioMixer;
-    
-    // Game data
-    public Game gameData;
-    
+
     // Resolution dropdown variables
     private Resolution[] resolutions;
     private List<string> resolutionOptions = new List<string>();
@@ -38,13 +34,12 @@ public class UIManager : MonoBehaviour
     private float currentVolume;
     private bool currentFPSToggle;
     
-    private void Start()
+    protected virtual void Start()
     {
         GenerateResolutionDropdown();
         GenerateQualityDropdown();
         GenerateLanguageDropdown();
         LoadSettings();
-        playerCount.value = gameData.playerCount - 1;
     }
 
     // Loads the scene with the given variable name
@@ -95,11 +90,6 @@ public class UIManager : MonoBehaviour
         currentFPSToggle = val;
     }
 
-    public void SetPlayerCount(int val)
-    {
-        gameData.playerCount = val + 1;
-    }
-    
     // Saves settings set by the player in the PlayerPrefs class
     public void SaveSettings()
     {

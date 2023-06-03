@@ -87,6 +87,10 @@ MonoBehaviour:
     m_Key: Player Count
     m_Metadata:
       m_Items: []
+  - m_Id: 33161754903101440
+    m_Key: Next
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

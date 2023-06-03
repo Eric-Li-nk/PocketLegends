@@ -257,7 +257,7 @@ MonoBehaviour:
   m_NotificationBehavior: 3
   m_MaxPlayerCount: 4
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 2
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -2318,6 +2318,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6606006116732910437, guid: 230d26a8a014c8d4daa718ceea9d9611, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6606006116732910438, guid: 230d26a8a014c8d4daa718ceea9d9611, type: 3}
       propertyPath: m_RootOrder
       value: 0

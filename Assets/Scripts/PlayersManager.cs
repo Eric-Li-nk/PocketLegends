@@ -21,14 +21,12 @@ public class PlayersManager : MonoBehaviour
     private void Awake()
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
-        // Temporaire
-        // AddPlayer(FindObjectOfType<PlayerInput>());
     }
 
     private void Start()
     {
         for(int i = 0; i < gameData.playerCount; i++)
-            PlayerInput.Instantiate(playerPrefab,characters);
+            Instantiate(playerPrefab,characters).name = gameData.playerName[i];
     }
 
     private void OnEnable()
