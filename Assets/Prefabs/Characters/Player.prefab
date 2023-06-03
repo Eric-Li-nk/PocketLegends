@@ -333,6 +333,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6166643714012797879}
+        m_TargetAssemblyTypeName: ThirdPersonCam, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 256ed7bc-b96f-40bd-b307-37e26da56a2d
     m_ActionName: PlayerControl/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
@@ -352,7 +364,19 @@ MonoBehaviour:
     m_ActionId: b013d3dc-e168-4fee-a7cf-8763a6e97957
     m_ActionName: PlayerControl/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7022629716288620256}
+        m_TargetAssemblyTypeName: FirstPersonCam, Assembly-CSharp
+        m_MethodName: OnLook
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6a1eca50-9013-4a84-95d4-5e9ad05d600c
     m_ActionName: PlayerControl/Look[/Mouse/delta]
   - m_PersistentCalls:
@@ -669,7 +693,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129012629193608286}
-  m_LocalRotation: {x: 0.21672188, y: 0.08875389, z: 0.0030213625, w: 0.97218585}
+  m_LocalRotation: {x: 0.21672188, y: 0.088753924, z: 0.003021363, w: 0.97218585}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1222,15 +1246,6 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   vertical:
-    m_Name: 
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  objOrientation:
     m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
@@ -1874,7 +1889,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5235477261359856260}
-  m_LocalRotation: {x: 0.26167437, y: 0.08879841, z: -0.0011071432, w: 0.961062}
+  m_LocalRotation: {x: 0.2616744, y: 0.08879841, z: -0.0011071443, w: 0.961062}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2334,6 +2349,8 @@ MonoBehaviour:
   sensX: 400
   sensY: 400
   orientation: {fileID: 1440316653189961620}
+  playerObj: {fileID: 1474842155052830450}
+  rotationSpeed: 7
 --- !u!1 &8059174527450617036
 GameObject:
   m_ObjectHideFlags: 0

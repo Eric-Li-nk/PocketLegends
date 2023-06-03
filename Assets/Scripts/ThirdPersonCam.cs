@@ -18,8 +18,8 @@ public class ThirdPersonCam : MonoBehaviour, AxisState.IInputAxisProvider
 
     [HideInInspector] public InputAction horizontal;
     [HideInInspector] public InputAction vertical;
-    [HideInInspector] public InputAction objOrientation;
-    
+
+    private Vector2 moveInput = Vector2.zero;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -39,12 +39,17 @@ public class ThirdPersonCam : MonoBehaviour, AxisState.IInputAxisProvider
         orientation.forward = viewDir.normalized;
 
         // rotate player object
-        float horizontalInput = objOrientation.ReadValue<Vector2>().x;
-        float verticalInput = objOrientation.ReadValue<Vector2>().y;
+        float horizontalInput = moveInput.x;
+        float verticalInput = moveInput.y;
         Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if (inputDir != Vector3.zero)
             playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+    }
+    
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
     }
 
     public float GetAxisValue(int axis)

@@ -57,6 +57,6 @@ public class PlayersManager : MonoBehaviour
         player.GetComponentInChildren<CinemachineVirtualCamera>(includeInactive:true).gameObject.layer = layerToAdd;
         player.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
         player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).horizontal = player.actions.FindAction("Look");
-        player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).objOrientation = player.actions.FindAction("Move");
+        //player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).objOrientation = player.actions.FindAction("Move");
     }
 }
