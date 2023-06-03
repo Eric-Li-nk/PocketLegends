@@ -199,9 +199,9 @@ GameObject:
   m_Component:
   - component: {fileID: 101441046}
   - component: {fileID: 101441048}
-  - component: {fileID: 101441045}
-  - component: {fileID: 101441049}
   - component: {fileID: 101441050}
+  - component: {fileID: 101441049}
+  - component: {fileID: 101441045}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -216,13 +216,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101441044}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 988bc24779d813047965f1d3c589ef4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   charactersList: {fileID: 944688671}
-  checkpointList: {fileID: 1391966022}
+  checkpointList: {fileID: 1391966023}
   leaderboardContent: {fileID: 1678998108}
   rowUI: {fileID: 2916771527828028696, guid: 418bade0315948f4a9bf5634ae499821, type: 3}
   totalLap: 0
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101441044}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c288107fff64ab841ba78a8a4682543d, type: 3}
   m_Name: 
@@ -302,7 +302,6 @@ MonoBehaviour:
   totalLap: 0
   checkpoints: {fileID: 1391966023}
   charactersList: {fileID: 944688671}
-  lt: {fileID: 101441045}
 --- !u!114 &101441050
 MonoBehaviour:
   m_ObjectHideFlags: 0

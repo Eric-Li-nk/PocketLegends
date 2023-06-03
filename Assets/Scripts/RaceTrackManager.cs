@@ -16,12 +16,16 @@ public class RaceTrackManager : MonoBehaviour
     public GameObject charactersList;
     private PlayerLapTracker[] charactersLapTracker;
     private BotLapTracker[] botLapTracker;
-    
-    public LeaderboardTracker lt;
 
-    private IEnumerator Start()
+    private LeaderboardTracker lt;
+    
+    private void Awake()
     {
-        yield return new WaitForSeconds(0.1f);
+        lt = GetComponent<LeaderboardTracker>();
+    }
+
+    private void Start()
+    {
         lt.totalLap = totalLap;
         totalCheckpoint = GetTotalCheckpointCount();
         charactersLapTracker = charactersList.GetComponentsInChildren<PlayerLapTracker>();

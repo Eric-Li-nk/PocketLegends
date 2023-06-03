@@ -12,7 +12,7 @@ public class LeaderboardTracker : MonoBehaviour
     public GameObject charactersList;
 
     [Header("Gameobject which contains all checkpoints")]
-    public GameObject checkpointList;
+    public Transform checkpointList;
 
     [Header("UI elements that makes the leaderboard")]
     public GameObject leaderboardContent;
@@ -21,6 +21,7 @@ public class LeaderboardTracker : MonoBehaviour
     private Character[] characters;
     private Transform checkpoints;
     private int totalCheckpoint;
+    [HideInInspector]
     public int totalLap;
     
     public GameObject finishMenu;
@@ -31,10 +32,8 @@ public class LeaderboardTracker : MonoBehaviour
         totalCheckpoint = GetTotalCheckpointCount();
     }
 
-    public IEnumerator Start()
+    public void Start()
     {
-        // Si y a un autre moyen de récupérer la liste des joueurs après qu'ils sont créer, prendre une autre méthode.
-        yield return new WaitForSeconds(0.1f);
         characters = charactersList.GetComponentsInChildren<Character>();
     }
 

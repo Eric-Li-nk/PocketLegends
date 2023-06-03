@@ -18,15 +18,21 @@ public class PlayersManager : MonoBehaviour
     public Transform characters;
 
     [SerializeField] private Game gameData;
+    private LeaderboardTracker lt;
+    private RaceTrackManager rtm;
     private void Awake()
     {
         playerInputManager = FindObjectOfType<PlayerInputManager>();
+        lt = GetComponent<LeaderboardTracker>();
+        rtm = GetComponent<RaceTrackManager>();
     }
 
     private void Start()
     {
         for(int i = 0; i < gameData.playerCount; i++)
             Instantiate(playerPrefab,characters).name = gameData.playerName[i];
+        rtm.enabled = true;
+        lt.enabled = true;
     }
 
     private void OnEnable()
