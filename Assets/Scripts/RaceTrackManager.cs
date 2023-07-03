@@ -47,6 +47,13 @@ public class RaceTrackManager : MonoBehaviour
                 blt.raceIsLoop = true;
             }
         }
+        else
+        {
+            foreach (PlayerLapTracker plt in charactersLapTracker)
+            {
+                plt.lapTrackerText.gameObject.SetActive(false);
+            }
+        }
     }
 
     private int GetTotalCheckpointCount()
