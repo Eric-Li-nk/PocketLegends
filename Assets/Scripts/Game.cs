@@ -10,4 +10,5 @@ public class Game : ScriptableObject
     public int playerCount;
 
     public List<string> playerName;
+    public List<GameObject> playerPrefab;
 }

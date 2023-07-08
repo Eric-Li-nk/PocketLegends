@@ -12,8 +12,7 @@ public class PlayersManager : MonoBehaviour
     [SerializeField] private List<LayerMask> playerLayers;
 
     private PlayerInputManager playerInputManager;
-
-    public GameObject playerPrefab;
+    
     public Transform characters;
 
     [SerializeField] private Game gameData;
@@ -29,7 +28,7 @@ public class PlayersManager : MonoBehaviour
     private void Start()
     {
         for(int i = 0; i < gameData.playerCount; i++)
-            Instantiate(playerPrefab,characters).name = gameData.playerName[i];
+            Instantiate(gameData.playerPrefab[i],characters).name = gameData.playerName[i];
         rtm.enabled = true;
         lt.enabled = true;
     }
@@ -51,9 +50,10 @@ public class PlayersManager : MonoBehaviour
 
         int layerToAdd = (int)Mathf.Log(playerLayers[players.Count - 1].value, 2);
 
-        foreach (var cam in player.GetComponentsInChildren<CinemachineFreeLook>(includeInactive:true))
+        foreach (CinemachineFreeLook cam in player.GetComponentsInChildren<CinemachineFreeLook>(includeInactive:true))
             cam.gameObject.layer = layerToAdd;
-        player.GetComponentInChildren<CinemachineVirtualCamera>(includeInactive:true).gameObject.layer = layerToAdd;
+        foreach (CinemachineVirtualCamera cam in player.GetComponentsInChildren<CinemachineVirtualCamera>(includeInactive:true))
+            cam.gameObject.layer = layerToAdd;
         player.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
         player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).horizontal = player.actions.FindAction("Look");
         //player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).objOrientation = player.actions.FindAction("Move");

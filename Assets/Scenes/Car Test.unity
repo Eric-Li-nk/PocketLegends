@@ -1975,7 +1975,6 @@ MonoBehaviour:
     m_Bits: 4194304
   - serializedVersion: 2
     m_Bits: 8388608
-  playerPrefab: {fileID: 3430035864244475209, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
   characters: {fileID: 550296221}
   gameData: {fileID: 11400000, guid: 770a30614fa70f145a65d253580c03f6, type: 2}
 --- !u!114 &1691509900
