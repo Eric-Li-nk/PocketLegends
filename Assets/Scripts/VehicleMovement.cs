@@ -10,6 +10,9 @@ public class VehicleMovement : MonoBehaviour
     [SerializeField] private Text SpeedText;
     public Transform centerOfMass;
     
+    public float carMass = 500f;
+    public float carDrag = 0.05f;
+    
     private Wheel[] wheels;
 
     [Header("Acceleration")]
@@ -24,11 +27,17 @@ public class VehicleMovement : MonoBehaviour
     
     private Vector2 movementInput = Vector2.zero;
 
-    public void Start()
+    public void Awake()
     {
-        wheels = GetComponentsInChildren<Wheel>();
-        // Keeps the vehicle from falling over
+        wheels = GetComponentsInChildren<Wheel>(true);
         rb = GetComponent<Rigidbody>();
+    }
+
+    public void OnEnable()
+    {
+        rb.mass = carMass;
+        rb.drag = carDrag;
+        rb.freezeRotation = false;
         rb.centerOfMass = centerOfMass.localPosition;
     }
 

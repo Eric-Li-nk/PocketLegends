@@ -5,13 +5,17 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Character))]
 public class PlayerMovement : MonoBehaviour
 {
     
-    public Character player;
+    private Character player;
     
     [Header("States")] 
     public bool fly = false;
+
+    [Header("Rigidbody variables")] 
+    public float playerMass = 1.0f;
     
     // Movement variables
     private float moveSpeed;
@@ -50,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        player = GetComponent<Character>();
         moveSpeed = player.maxSpeed;
         moveSpeedFly = player.maxFlySpeed;
         groundDrag = player.groundDrag;
@@ -57,12 +62,14 @@ public class PlayerMovement : MonoBehaviour
         jumpForce = player.jumpForce;
         jumpCooldown = player.jumpCooldown;
         airMultiplier = player.airMultiplier;
+        rb = GetComponent<Rigidbody>();
     }
 
-    private void Start()
+    public void OnEnable()
     {
-        rb = GetComponent<Rigidbody>();
+        rb.mass = playerMass;
         rb.freezeRotation = true;
+        rb.ResetCenterOfMass();
         ResetJump();
     }
 

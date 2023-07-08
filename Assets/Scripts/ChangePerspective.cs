@@ -5,12 +5,14 @@ using UnityEngine.InputSystem;
 
 public class ChangePerspective : MonoBehaviour
 {
-    [SerializeField] private GameObject firstPersonCam;
-    [SerializeField] private GameObject thirdPersonCam;
+    [SerializeField] private Transform playerCameras;
+    [SerializeField] private Transform carCameras;
 
-    public void onChangePerspective(InputAction.CallbackContext context)
+    public void OnChangePerspective(InputAction.CallbackContext context)
     {
-        firstPersonCam.SetActive(!firstPersonCam.activeSelf);
-        thirdPersonCam.SetActive(!thirdPersonCam.activeSelf);
+        foreach (Transform camera in playerCameras)
+            camera.gameObject.SetActive(!camera.gameObject.activeSelf);
+        foreach (Transform camera in carCameras)
+            camera.gameObject.SetActive(!camera.gameObject.activeSelf);
     }
 }

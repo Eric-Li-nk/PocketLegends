@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LeaderboardTracker))]
 public class RaceTrackManager : MonoBehaviour
 {
 
     [SerializeField] private bool isLoop;
     [SerializeField] private int totalLap;
     private int totalCheckpoint;
+
+    [SerializeField] private MovementType startingMovementType;
     
     [SerializeField] private Transform checkpoints;
     
@@ -16,6 +19,7 @@ public class RaceTrackManager : MonoBehaviour
     public GameObject charactersList;
     private PlayerLapTracker[] charactersLapTracker;
     private BotLapTracker[] botLapTracker;
+    private SwapMovement[] charactersSwapMovements;
 
     private LeaderboardTracker lt;
     
@@ -30,6 +34,7 @@ public class RaceTrackManager : MonoBehaviour
         totalCheckpoint = GetTotalCheckpointCount();
         charactersLapTracker = charactersList.GetComponentsInChildren<PlayerLapTracker>();
         botLapTracker = charactersList.GetComponentsInChildren<BotLapTracker>();
+        charactersSwapMovements = charactersList.GetComponentsInChildren<SwapMovement>();
         foreach (PlayerLapTracker plt in charactersLapTracker)
             plt.totalCheckpoint = totalCheckpoint;
         foreach (BotLapTracker blt in botLapTracker)
@@ -53,6 +58,11 @@ public class RaceTrackManager : MonoBehaviour
             {
                 plt.lapTrackerText.gameObject.SetActive(false);
             }
+        }
+
+        foreach (SwapMovement swapMovement in charactersSwapMovements)
+        {
+            swapMovement.MovementType = startingMovementType;
         }
     }
 
