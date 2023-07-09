@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class LeaderboardTracker : MonoBehaviour
     public int totalLap;
     
     public GameObject finishMenu;
+    public Game gameData;
     
     private void Awake()
     {
@@ -72,17 +74,51 @@ public class LeaderboardTracker : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0f;
         finishMenu.SetActive(true);
+        SaveScore();
         ShowLeaderboard();
         enabled = false;
     }
 
     public void ShowLeaderboard()
     {
-        foreach (Character character in characters)
+        List<int> playersRankingIndex = GetPlayersRankingIndex();
+        foreach (int playerIndex in playersRankingIndex)
         {
             var row = Instantiate(rowUI, leaderboardContent.transform).GetComponent<RowUI>();
-            row.playerName.text = character.name;
-            row.rank.text = character.rank.ToString();
+            row.playerName.text = gameData.playerName[playerIndex];
+            row.rank.text = gameData.playerScore[playerIndex].ToString();
+        }
+    }
+
+    private List<int> GetPlayersRankingIndex()
+    {
+        List<int> playersRankingIndex = new List<int>();
+        List<int> playersScore = new List<int>(gameData.playerScore);
+        for (int i = 0; i < playersScore.Count; i++)
+        {
+            int min = 1000000;
+            int minIndex = -1;
+            for (int j = 0; j < playersScore.Count; i++)
+            {
+                if (playersScore[j] < min)
+                {
+                    min = playersScore[j];
+                    minIndex = j;
+                }
+            }
+            playersScore[minIndex] = 1000000;
+            playersRankingIndex.Add(minIndex);
+        }
+
+        return playersRankingIndex;
+    }
+
+    private void SaveScore()
+    {
+        foreach (Character character in characters)
+        {
+            int indexOfPlayer = gameData.playerName.IndexOf(character.name);
+            gameData.playerScore[indexOfPlayer] += character.rank;
         }
     }
     
