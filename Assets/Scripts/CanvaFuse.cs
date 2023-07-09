@@ -1,23 +1,41 @@
+using System;
 using UnityEngine;
+
+public enum BonusType
+{
+    Bonus,
+    Inverse,
+    Slow
+}
 
 public class CanvaFuse : MonoBehaviour
 {
-    public GameObject UiObject;
-    public GameObject additionalUiObject;
+    private GameObject UiObject;
+    private GameObject additionalUiObject;
+    public BonusType bonusType;
     public GameObject cube;
     private bool triggerExited = false;
     private bool resetTimerActive = false;
-
-    private void Start()
-    {
-        UiObject.SetActive(false);
-        additionalUiObject.SetActive(false);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            switch (bonusType)
+            {
+                case BonusType.Bonus:
+                    UiObject = other.transform.parent.Find("bonus").Find("fuse").gameObject;
+                    break;
+                case BonusType.Inverse:
+                    UiObject = other.transform.parent.Find("bonus").Find("inverse").gameObject;
+                    break;
+                case BonusType.Slow:
+                    UiObject = other.transform.parent.Find("bonus").Find("slow").gameObject;
+                    break;
+            }
+            
+            additionalUiObject = other.transform.parent.Find("bonus").Find("none").gameObject;
+            
             UiObject.SetActive(true);
             triggerExited = false;
 

@@ -17,9 +17,12 @@ public class BonusBoxScript : MonoBehaviour
             isActive = false; // désactiver la boîte bonus une fois qu'elle a été collectée
 
             // Désactiver l'objet BonusBox et jouer une animation de particules
+            
+            /*
             gameObject.SetActive(false);
             GetComponent<ParticleSystem>().Play();
-
+            */
+            
             // Réactiver l'objet BonusBox après un certain temps
             Invoke("Reactivate", deactivateTime);
         }
@@ -34,9 +37,8 @@ public class BonusBoxScript : MonoBehaviour
     private void ApplySpeedBoost(GameObject player)
     {
         this.player = player; // enregistrer la référence au joueur
-        float originalSpeed = player.GetComponent<VehicleMovement>().motorTorque;
-        player.GetComponent<VehicleMovement>().motorTorque *= 2f; // multiplier la vitesse du joueur par 2
-        Time.timeScale = 1.5f; // accélérer le temps dans le jeu
+        float originalSpeed = player.GetComponentInParent<VehicleMovement>().motorTorque;
+        player.GetComponentInParent<VehicleMovement>().motorTorque *= 2f; // multiplier la vitesse du joueur par 2
 
         boostStartTime = Time.time; // enregistrer l'heure de début du bonus
     }
@@ -51,10 +53,7 @@ public class BonusBoxScript : MonoBehaviour
 
     private void ResetSpeed()
     {
-        float originalSpeed = player.GetComponent<VehicleMovement>().motorTorque;
-
-        player.GetComponent<VehicleMovement>().motorTorque = originalSpeed;
-
-        Time.timeScale = 1f; // réinitialiser le temps dans le jeu
+        float originalSpeed = player.GetComponentInParent<VehicleMovement>().motorTorque;
+        player.GetComponentInParent<VehicleMovement>().motorTorque = originalSpeed;
     }
 }
