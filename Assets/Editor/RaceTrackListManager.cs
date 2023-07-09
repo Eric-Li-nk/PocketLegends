@@ -20,8 +20,6 @@ public class RaceTrackListManager : EditorWindow
 
     private List<string> raceTrackNameList = new List<string>();
 
-    private GUIStyle style;
-    
     [MenuItem("Tools/Race Track Manager")]
     public static void ShowWindow()
     {
@@ -30,6 +28,7 @@ public class RaceTrackListManager : EditorWindow
 
     private void OnGUI()
     {
+        GUIStyle style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
         if (currentScene.name == "StartMenu")
         {
             int i = 1;
@@ -50,7 +49,10 @@ public class RaceTrackListManager : EditorWindow
                     if (sceneList.Contains(raceTrackName))
                     {
                         raceTrack.GetComponentInChildren<TMP_Text>().text = raceTrackName;
-                        UnityEventTools.RegisterStringPersistentListener(raceTrackButton.onClick,0, uiManager.LoadScene, raceTrackName);
+                        if(raceTrackButton.onClick.GetPersistentEventCount() < 1)
+                            UnityEventTools.AddStringPersistentListener(raceTrackButton.onClick, uiManager.LoadScene, raceTrackName);
+                        else
+                            UnityEventTools.RegisterStringPersistentListener(raceTrackButton.onClick,0, uiManager.LoadScene, raceTrackName);
                     }
                     else if(raceTrackName != "")
                     {
@@ -68,7 +70,6 @@ public class RaceTrackListManager : EditorWindow
 
     private void Awake()
     {
-        style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
         GetSceneList();
         CheckCurrentScene();
     }
