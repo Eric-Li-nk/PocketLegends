@@ -96,9 +96,9 @@ public class LeaderboardTracker : MonoBehaviour
         List<int> playersScore = new List<int>(gameData.playerScore);
         for (int i = 0; i < playersScore.Count; i++)
         {
-            int min = 1000000;
+            int min = 1000;
             int minIndex = -1;
-            for (int j = 0; j < playersScore.Count; i++)
+            for (int j = 0; j < playersScore.Count; j++)
             {
                 if (playersScore[j] < min)
                 {
@@ -106,10 +106,9 @@ public class LeaderboardTracker : MonoBehaviour
                     minIndex = j;
                 }
             }
-            playersScore[minIndex] = 1000000;
             playersRankingIndex.Add(minIndex);
+            playersScore[minIndex] = 1000;
         }
-
         return playersRankingIndex;
     }
 
