@@ -66,7 +66,7 @@ public class LeaderboardTracker : MonoBehaviour
         return null;
     }
     
-    private void EndGame()
+    public void EndGame()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
