@@ -6,6 +6,8 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 public class StartMenuUIManager : UIManager
@@ -20,6 +22,10 @@ public class StartMenuUIManager : UIManager
     public Game gameData;
     
     public Object[] characterPrefabList;
+
+    private List<Button> raceTrackButtonList = new List<Button>();
+    private List<string> SelectedRaceTrackList = new List<string>();
+    private int numberOfSelectedRaceTrack = 0;
     
     protected override void Start()
     {
@@ -28,12 +34,24 @@ public class StartMenuUIManager : UIManager
         characterPrefabList = Resources.LoadAll(charactersFolderPath);
         GeneratePlayerCharacterSelectionDropdown();
     }
+
+    public void Play()
+    {
+        if (SelectedRaceTrackList.Count > 0)
+        {
+            SaveRaceTrackList();
+            LoadScene(gameData.raceTrackList[0]);
+        }
+    }
     
     public void SavePlayers()
     {
         gameData.playerCount = playerCountDropdown.value + 1;
         gameData.playerName = new List<string>();
         gameData.playerPrefab = new List<GameObject>();
+        gameData.playerScore = new List<int>();
+
+        gameData.currentRaceTrackIndex = 0;
         
         TMP_InputField[] playerNameList = playerNameInputFieldList.GetComponentsInChildren<TMP_InputField>();
 
@@ -59,6 +77,51 @@ public class StartMenuUIManager : UIManager
             i++;
         }
         
+        for(i = 0; i < gameData.playerCount; i++)
+            gameData.playerScore.Add(0);
+    }
+
+    private void SaveRaceTrackList()
+    {
+        gameData.currentRaceTrackIndex = 0;
+        gameData.raceTrackList = SelectedRaceTrackList;
+    }
+
+    public void OnClickRaceTrack(Button raceTrackButton)
+    {
+        string raceTrackName = raceTrackButton.transform.Find("Text").GetComponent<TMP_Text>().text;
+        TMP_Text raceTrackIndexTMP = raceTrackButton.transform.Find("Index").GetComponent<TMP_Text>();
+        if (!SelectedRaceTrackList.Contains(raceTrackName))
+        {
+            raceTrackButtonList.Add(raceTrackButton);
+            SelectRaceTrack(raceTrackName, raceTrackIndexTMP);
+        }
+        else
+        {
+            DeselectRaceTrack(raceTrackName, raceTrackIndexTMP, raceTrackButton);
+        }
+    }
+
+    private void SelectRaceTrack(string raceTrackName, TMP_Text raceTrackIndexTMP)
+    {
+        numberOfSelectedRaceTrack++;
+        SelectedRaceTrackList.Add(raceTrackName);
+        raceTrackIndexTMP.text = numberOfSelectedRaceTrack.ToString();
+    }
+
+    private void DeselectRaceTrack(string raceTrackName, TMP_Text raceTrackIndexTMP, Button raceTrackButton)
+    {
+        int SelectedRaceTrackIndex = SelectedRaceTrackList.IndexOf(raceTrackName);
+        for (int i = SelectedRaceTrackIndex; i < SelectedRaceTrackList.Count-1; i++)
+        {
+            SelectedRaceTrackList[i] = SelectedRaceTrackList[i + 1];
+            raceTrackButtonList[i] = raceTrackButtonList[i + 1];
+            raceTrackButtonList[i].transform.Find("Index").GetComponent<TMP_Text>().text = (i+1).ToString();
+        }
+        SelectedRaceTrackList.RemoveAt(SelectedRaceTrackList.Count-1);
+        raceTrackButtonList.RemoveAt(raceTrackButtonList.Count-1);
+        raceTrackIndexTMP.text = "";
+        numberOfSelectedRaceTrack--;
     }
     
     private void GeneratePlayerCharacterSelectionDropdown()

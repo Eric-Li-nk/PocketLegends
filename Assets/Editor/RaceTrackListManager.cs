@@ -52,10 +52,14 @@ public class RaceTrackListManager : EditorWindow
                         TMP_Text raceTrackText = raceTrack.GetComponentInChildren<TMP_Text>();
                         raceTrackText.text = raceTrackName;
                         EditorUtility.SetDirty(raceTrackText);
+                        int buttonPersistentEventCount = raceTrackButton.onClick.GetPersistentEventCount();
+                        if(buttonPersistentEventCount > 1)
+                            for(int j = 0; j < buttonPersistentEventCount; j++)
+                                UnityEventTools.RemovePersistentListener(raceTrackButton.onClick,0);
                         if(raceTrackButton.onClick.GetPersistentEventCount() < 1)
-                            UnityEventTools.AddStringPersistentListener(raceTrackButton.onClick, uiManager.LoadScene, raceTrackName);
+                            UnityEventTools.AddObjectPersistentListener(raceTrackButton.onClick, uiManager.OnClickRaceTrack, raceTrackButton);
                         else
-                            UnityEventTools.RegisterStringPersistentListener(raceTrackButton.onClick,0, uiManager.LoadScene, raceTrackName);
+                            UnityEventTools.RegisterObjectPersistentListener(raceTrackButton.onClick,0, uiManager.OnClickRaceTrack, raceTrackButton);
                         EditorUtility.SetDirty(raceTrackButton);
                     }
                     else if(raceTrackName != "")
@@ -64,8 +68,6 @@ public class RaceTrackListManager : EditorWindow
                     }
                     i++;
                 }
-                
-                //EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
             }
         }
         else

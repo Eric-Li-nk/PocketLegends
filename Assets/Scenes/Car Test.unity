@@ -1948,6 +1948,7 @@ MonoBehaviour:
   rowUI: {fileID: 2916771527828028696, guid: 418bade0315948f4a9bf5634ae499821, type: 3}
   totalLap: 0
   finishMenu: {fileID: 1776691846}
+  gameData: {fileID: 11400000, guid: 770a30614fa70f145a65d253580c03f6, type: 2}
 --- !u!114 &1691509899
 MonoBehaviour:
   m_ObjectHideFlags: 0

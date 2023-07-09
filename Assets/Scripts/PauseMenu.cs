@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,7 +11,18 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public GameObject finishMenuUI;
-    
+
+    public Game gameData;
+
+    private void Start()
+    {
+        if (IsLastTrack())
+        {
+            finishMenuUI.transform.Find("Next Race Button").gameObject.SetActive(false);
+            finishMenuUI.transform.Find("Return to Title Button").gameObject.SetActive(true);
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -21,6 +33,20 @@ public class PauseMenu : MonoBehaviour
                 Resume();
             else
                 Pause();
+        }
+    }
+
+    public void NextRaceTrack()
+    {
+        if (!IsLastTrack())
+        {
+            gameData.currentRaceTrackIndex++;
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(gameData.raceTrackList[gameData.currentRaceTrackIndex]);
+        }
+        else
+        {
+            ReturnToTitle();
         }
     }
     
@@ -56,5 +82,10 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    private bool IsLastTrack()
+    {
+        return gameData.currentRaceTrackIndex >= gameData.raceTrackList.Count - 1;
     }
 }

@@ -96,6 +96,18 @@ MonoBehaviour:
     m_Localized: Next
     m_Metadata:
       m_Items: []
+  - m_Id: 46241860194189312
+    m_Localized: Next race
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46246920844263424
+    m_Localized: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46248032078970880
+    m_Localized: Leaderboard
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -91,6 +91,18 @@ MonoBehaviour:
     m_Key: Next
     m_Metadata:
       m_Items: []
+  - m_Id: 46241860194189312
+    m_Key: Next Race
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46246920844263424
+    m_Key: Score
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46248032078970880
+    m_Key: Leaderboard
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
