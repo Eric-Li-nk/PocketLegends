@@ -20,6 +20,8 @@ public class RaceTrackListManager : EditorWindow
 
     private List<string> raceTrackNameList = new List<string>();
 
+    private GUIStyle style;
+    
     [MenuItem("Tools/Race Track Manager")]
     public static void ShowWindow()
     {
@@ -28,11 +30,6 @@ public class RaceTrackListManager : EditorWindow
 
     private void OnGUI()
     {
-        GUIStyle style = new GUIStyle(GUI.skin.label)
-        {
-            alignment = TextAnchor.MiddleCenter
-        };
-        
         if (currentScene.name == "StartMenu")
         {
             int i = 1;
@@ -71,6 +68,7 @@ public class RaceTrackListManager : EditorWindow
 
     private void Awake()
     {
+        style = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
         GetSceneList();
         CheckCurrentScene();
     }
