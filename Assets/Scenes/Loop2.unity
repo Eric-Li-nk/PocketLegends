@@ -234,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLoop: 1
   totalLap: 1
+  startingMovementType: 0
   checkpoints: {fileID: 1391966023}
   charactersList: {fileID: 944688671}
 --- !u!114 &101441050
@@ -263,7 +264,6 @@ MonoBehaviour:
     m_Bits: 4194304
   - serializedVersion: 2
     m_Bits: 8388608
-  playerPrefab: {fileID: 1440316652321422913, guid: 94fd4dcab7f5e0542b91cf9d94a970f3, type: 3}
   characters: {fileID: 944688672}
   gameData: {fileID: 11400000, guid: 770a30614fa70f145a65d253580c03f6, type: 2}
 --- !u!1 &317166850
