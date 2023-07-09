@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using TMPro;
 using UnityEditor;
 using UnityEditor.Events;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.SceneManagement;
@@ -48,11 +49,14 @@ public class RaceTrackListManager : EditorWindow
                     Button raceTrackButton = raceTrack.GetComponentInChildren<Button>();
                     if (sceneList.Contains(raceTrackName))
                     {
-                        raceTrack.GetComponentInChildren<TMP_Text>().text = raceTrackName;
+                        TMP_Text raceTrackText = raceTrack.GetComponentInChildren<TMP_Text>();
+                        raceTrackText.text = raceTrackName;
+                        EditorUtility.SetDirty(raceTrackText);
                         if(raceTrackButton.onClick.GetPersistentEventCount() < 1)
                             UnityEventTools.AddStringPersistentListener(raceTrackButton.onClick, uiManager.LoadScene, raceTrackName);
                         else
                             UnityEventTools.RegisterStringPersistentListener(raceTrackButton.onClick,0, uiManager.LoadScene, raceTrackName);
+                        EditorUtility.SetDirty(raceTrackButton);
                     }
                     else if(raceTrackName != "")
                     {
@@ -60,6 +64,8 @@ public class RaceTrackListManager : EditorWindow
                     }
                     i++;
                 }
+                
+                //EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
             }
         }
         else
