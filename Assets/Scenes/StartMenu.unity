@@ -1375,6 +1375,7 @@ MonoBehaviour:
   playerCharacterSelectionDropdownList: {fileID: 938663027}
   charactersFolderPath: Character Selection
   gameData: {fileID: 11400000, guid: 770a30614fa70f145a65d253580c03f6, type: 2}
+  AIPrefab: {fileID: 6071147412947642005, guid: 08655e11d86a5dc48bd21795b02781c2, type: 3}
   characterPrefabList: []
 --- !u!224 &590077966 stripped
 RectTransform:

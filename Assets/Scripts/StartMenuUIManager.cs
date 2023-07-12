@@ -20,7 +20,8 @@ public class StartMenuUIManager : UIManager
     public string charactersFolderPath;
     
     public Game gameData;
-    
+
+    public GameObject AIPrefab;
     public Object[] characterPrefabList;
 
     private List<Button> raceTrackButtonList = new List<Button>();
@@ -79,6 +80,21 @@ public class StartMenuUIManager : UIManager
         
         for(i = 0; i < gameData.playerCount; i++)
             gameData.playerScore.Add(0);
+        
+        // Add AI to the game until there are 4 characters
+        AddAI();
+    }
+
+    private void AddAI()
+    {
+        int AiNumber = 1;
+        for (int i = gameData.playerCount; i < 4; i++)
+        {
+            gameData.playerName.Add("AI " + AiNumber);
+            gameData.playerScore.Add(0);
+            gameData.playerPrefab.Add(AIPrefab);
+            AiNumber++;
+        }
     }
 
     private void SaveRaceTrackList()

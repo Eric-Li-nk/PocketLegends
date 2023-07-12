@@ -27,8 +27,14 @@ public class PlayersManager : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < gameData.playerCount; i++)
-            Instantiate(gameData.playerPrefab[i],characters).name = gameData.playerName[i];
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject player = Instantiate(gameData.playerPrefab[i],characters);
+            player.name = gameData.playerName[i];
+            if (i >= gameData.playerCount)
+                player.transform.position = playerSpawns[i].position;
+        }
+            
         rtm.enabled = true;
         lt.enabled = true;
     }
@@ -57,5 +63,10 @@ public class PlayersManager : MonoBehaviour
         player.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
         player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).horizontal = player.actions.FindAction("Look");
         //player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).objOrientation = player.actions.FindAction("Move");
+    }
+
+    private void AddAI(Transform AI)
+    {
+        
     }
 }
