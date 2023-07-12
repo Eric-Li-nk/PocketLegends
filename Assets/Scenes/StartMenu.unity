@@ -494,7 +494,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_text
-      value: Loop2
+      value: Car
       objectReference: {fileID: 0}
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_fontSize
@@ -1855,7 +1855,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_text
-      value: Car Test
+      value: Loop
       objectReference: {fileID: 0}
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_fontSize
@@ -4036,7 +4036,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_text
-      value: Game
+      value: Platformer
       objectReference: {fileID: 0}
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_fontSize
