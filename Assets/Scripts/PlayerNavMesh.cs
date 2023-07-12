@@ -7,24 +7,15 @@ using UnityEngine.AI;
 public class PlayerNavMesh : MonoBehaviour
 {
     //[SerializeField] private Transform movePositionTransform;
-    [SerializeField] private List<Transform> checkpointTransforms;
-    [SerializeField] private bool loopCircuit = true;
+    public List<Transform> checkpointTransforms;
+    public bool loopCircuit;
 
     private NavMeshAgent navMeshAgent;
-    private int currentCheckpointIndex;
+    public int currentCheckpointIndex = 0;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-    
-        if (loopCircuit)
-        {
-            currentCheckpointIndex = 0;
-        }
-        else
-        {
-            currentCheckpointIndex = checkpointTransforms.Count - 1;
-        }
     }
 
     private void Update()
@@ -34,11 +25,16 @@ public class PlayerNavMesh : MonoBehaviour
             Debug.LogWarning("No checkpoints set!");
             return;
         }
-
+        
         SetDestinationToCurrentCheckpoint();
-
+        
+        // On attend que le navMeshAgent termine de trouver la route
+        if (navMeshAgent.pathPending)
+            return;
+        
         if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
+            
             currentCheckpointIndex++;
 
             if (currentCheckpointIndex >= checkpointTransforms.Count)

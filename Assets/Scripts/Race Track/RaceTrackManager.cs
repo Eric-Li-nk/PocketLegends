@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 [RequireComponent(typeof(LeaderboardTracker))]
@@ -20,6 +21,7 @@ public class RaceTrackManager : MonoBehaviour
     private PlayerLapTracker[] charactersLapTracker;
     private BotLapTracker[] botLapTracker;
     private SwapMovement[] charactersSwapMovements;
+    private PlayerNavMesh[] AINavMeshList;
 
     private LeaderboardTracker lt;
     
@@ -35,6 +37,7 @@ public class RaceTrackManager : MonoBehaviour
         charactersLapTracker = charactersList.GetComponentsInChildren<PlayerLapTracker>();
         botLapTracker = charactersList.GetComponentsInChildren<BotLapTracker>();
         charactersSwapMovements = charactersList.GetComponentsInChildren<SwapMovement>();
+        AINavMeshList = charactersList.GetComponentsInChildren<PlayerNavMesh>();
         foreach (PlayerLapTracker plt in charactersLapTracker)
             plt.totalCheckpoint = totalCheckpoint;
         foreach (BotLapTracker blt in botLapTracker)
@@ -55,14 +58,23 @@ public class RaceTrackManager : MonoBehaviour
         else
         {
             foreach (PlayerLapTracker plt in charactersLapTracker)
-            {
                 plt.lapTrackerText.gameObject.SetActive(false);
-            }
         }
 
         foreach (SwapMovement swapMovement in charactersSwapMovements)
-        {
             swapMovement.MovementType = startingMovementType;
+
+
+        List<Transform> checkpointList = new List<Transform>();
+
+        foreach (Transform t in checkpoints)
+            if(t.name != "Spawn")
+                checkpointList.Add(t);
+
+        foreach (PlayerNavMesh AInavMesh in AINavMeshList)
+        {
+            AInavMesh.checkpointTransforms = checkpointList;
+            AInavMesh.loopCircuit = isLoop;
         }
     }
 
