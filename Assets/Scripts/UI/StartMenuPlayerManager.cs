@@ -10,7 +10,8 @@ using UnityEngine.InputSystem;
 public class StartMenuPlayerManager : MonoBehaviour
 {
     public List<PlayerInput> players;
-    
+    public List<InputDevice> playerDevice;
+
     public PlayerInputManager playerInputManager;
 
     public TMP_Dropdown playerCountDropdown;
@@ -51,7 +52,6 @@ public class StartMenuPlayerManager : MonoBehaviour
     {
         players.Add(player);
         playerCountDropdown.value++;
-        
     }
 
     private void RemovePlayer(PlayerInput player)

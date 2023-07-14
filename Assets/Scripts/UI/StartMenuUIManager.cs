@@ -50,7 +50,6 @@ public class StartMenuUIManager : UIManager
     public void SavePlayers()
     {
         gameData.playerCount = playerCountDropdown.value;
-        gameData.playerInput = startMenuPlayerManager.players;
         gameData.playerName = new List<string>();
         gameData.playerPrefab = new List<GameObject>();
         gameData.playerScore = new List<int>();

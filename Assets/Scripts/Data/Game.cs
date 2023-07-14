@@ -8,7 +8,6 @@ public class Game : ScriptableObject
 {
 
     public int playerCount;
-    public List<PlayerInput> playerInput;
     public List<string> playerName;
     public List<GameObject> playerPrefab;
     public List<int> playerScore;

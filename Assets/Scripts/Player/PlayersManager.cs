@@ -31,17 +31,8 @@ public class PlayersManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             GameObject player = Instantiate(gameData.playerPrefab[i], characters);
-            
-            if (i < gameData.playerCount)
-            {
-                
-            }
-            else
-            {
-                player.transform.position = playerSpawns[i].position;
-            }
             player.name = gameData.playerName[i];
-
+            player.transform.position = playerSpawns[i].position;
         }
             
         rtm.enabled = true;
@@ -61,7 +52,6 @@ public class PlayersManager : MonoBehaviour
     public void AddPlayer(PlayerInput player)
     {
         players.Add(player);
-        player.transform.position = playerSpawns[players.Count - 1].position;
 
         int layerToAdd = (int)Mathf.Log(playerLayers[players.Count - 1].value, 2);
 
