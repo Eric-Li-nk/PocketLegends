@@ -6,6 +6,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -22,7 +23,9 @@ public class StartMenuUIManager : UIManager
     public Game gameData;
 
     public GameObject AIPrefab;
-    public Object[] characterPrefabList;
+    public StartMenuPlayerManager startMenuPlayerManager;
+    
+    private Object[] characterPrefabList;
 
     private List<Button> raceTrackButtonList = new List<Button>();
     private List<string> SelectedRaceTrackList = new List<string>();
@@ -31,7 +34,6 @@ public class StartMenuUIManager : UIManager
     protected override void Start()
     {
         base.Start();
-        playerCountDropdown.value = gameData.playerCount - 1;
         characterPrefabList = Resources.LoadAll(charactersFolderPath);
         GeneratePlayerCharacterSelectionDropdown();
     }
@@ -47,7 +49,8 @@ public class StartMenuUIManager : UIManager
     
     public void SavePlayers()
     {
-        gameData.playerCount = playerCountDropdown.value + 1;
+        gameData.playerCount = playerCountDropdown.value;
+        gameData.playerInput = startMenuPlayerManager.players;
         gameData.playerName = new List<string>();
         gameData.playerPrefab = new List<GameObject>();
         gameData.playerScore = new List<int>();
@@ -163,7 +166,7 @@ public class StartMenuUIManager : UIManager
             GameObject playerNameGameObject = playerNameInputFieldList.GetChild(i).gameObject;
             if(!playerNameGameObject.activeSelf)
                 playerNameGameObject.GetComponentInChildren<TMP_InputField>().text = String.Empty;
-            if(i <= val)
+            if(i < val)
                 playerNameGameObject.SetActive(true);
             else
                 playerNameGameObject.SetActive(false);
@@ -177,7 +180,7 @@ public class StartMenuUIManager : UIManager
             GameObject playerCharacterGameObject = playerCharacterSelectionDropdownList.GetChild(i).gameObject;
             if(!playerCharacterGameObject.activeSelf)
                 playerCharacterGameObject.GetComponentInChildren<TMP_Dropdown>().value = 0;
-            if(i <= val)
+            if(i < val)
                 playerCharacterGameObject.SetActive(true);
             else
                 playerCharacterGameObject.SetActive(false);

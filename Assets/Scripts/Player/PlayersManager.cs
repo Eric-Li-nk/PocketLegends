@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,10 +30,18 @@ public class PlayersManager : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            GameObject player = Instantiate(gameData.playerPrefab[i],characters);
-            player.name = gameData.playerName[i];
-            if (i >= gameData.playerCount)
+            GameObject player = Instantiate(gameData.playerPrefab[i], characters);
+            
+            if (i < gameData.playerCount)
+            {
+                
+            }
+            else
+            {
                 player.transform.position = playerSpawns[i].position;
+            }
+            player.name = gameData.playerName[i];
+
         }
             
         rtm.enabled = true;
@@ -63,10 +72,5 @@ public class PlayersManager : MonoBehaviour
         player.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
         player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).horizontal = player.actions.FindAction("Look");
         //player.GetComponentInChildren<ThirdPersonCam>(includeInactive: true).objOrientation = player.actions.FindAction("Move");
-    }
-
-    private void AddAI(Transform AI)
-    {
-        
     }
 }
