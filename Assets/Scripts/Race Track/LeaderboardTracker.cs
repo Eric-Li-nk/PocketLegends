@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 
 public class LeaderboardTracker : MonoBehaviour
 {
@@ -81,6 +82,10 @@ public class LeaderboardTracker : MonoBehaviour
 
     public void ShowLeaderboard()
     {
+        if (IsLastTrack())
+        {
+            finishMenu.transform.Find("Finish Text").GetComponent<LocalizeStringEvent>().SetEntry("EndGame");
+        }
         List<int> playersRankingIndex = GetPlayersRankingIndex();
         foreach (int playerIndex in playersRankingIndex)
         {
@@ -128,6 +133,11 @@ public class LeaderboardTracker : MonoBehaviour
             if(t.gameObject.activeSelf)
                 total++;
         return total;
+    }
+    
+    private bool IsLastTrack()
+    {
+        return gameData.currentRaceTrackIndex >= gameData.raceTrackList.Count - 1;
     }
     
 }
