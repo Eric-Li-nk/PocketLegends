@@ -87,11 +87,14 @@ public class LeaderboardTracker : MonoBehaviour
             finishMenu.transform.Find("Finish Text").GetComponent<LocalizeStringEvent>().SetEntry("EndGame");
         }
         List<int> playersRankingIndex = GetPlayersRankingIndex();
+        int i = 1;
         foreach (int playerIndex in playersRankingIndex)
         {
             var row = Instantiate(rowUI, leaderboardContent.transform).GetComponent<RowUI>();
+            row.rank.text = i.ToString();
             row.playerName.text = gameData.playerName[playerIndex];
-            row.rank.text = gameData.playerScore[playerIndex].ToString();
+            row.score.text = gameData.playerScore[playerIndex].ToString();
+            i++;
         }
     }
 
