@@ -5,7 +5,9 @@ using Cinemachine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.SmartFormat.PersistentVariables;
 using UnityEngine.Localization.Tables;
 
 public class PlayerLapTracker : MonoBehaviour
@@ -18,10 +20,15 @@ public class PlayerLapTracker : MonoBehaviour
     private int outOfBound;
     private int checkpointLayer;
     
-    public TextMeshProUGUI checkpointTrackerText;
-    public TextMeshProUGUI lapTrackerText;
+    public LocalizeStringEvent checkpointTrackerLocalizedString;
+    public LocalizeStringEvent lapTrackerLocalizedString;
     public TextMeshProUGUI rankText;
-    
+
+    private IntVariable checkpointTrackerTotalCheckpoint;
+    private IntVariable checkpointTrackerCurrentCheckpoint;
+    private IntVariable lapTrackerTotalLap;
+    private IntVariable lapTrackerCurrentLap;
+
     private Character character;
 
     public bool raceIsLoop = false;
@@ -32,13 +39,18 @@ public class PlayerLapTracker : MonoBehaviour
         outOfBound = LayerMask.NameToLayer("OutOfBound");
         checkpointLayer = LayerMask.NameToLayer("Checkpoint");
         character = transform.GetComponent<Character>();
+
+        checkpointTrackerTotalCheckpoint = (checkpointTrackerLocalizedString.StringReference["totalCheckpoint"] as IntVariable);
+        checkpointTrackerCurrentCheckpoint = (checkpointTrackerLocalizedString.StringReference["currentCheckpoint"] as IntVariable);
+        lapTrackerTotalLap = (lapTrackerLocalizedString.StringReference["totalLap"] as IntVariable);
+        lapTrackerCurrentLap = (lapTrackerLocalizedString.StringReference["currentLap"] as IntVariable);
     }
 
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(0.5f);
-        checkpointTrackerText.SetText(String.Format("Checkpoint 0/{0}", totalCheckpoint));
-        lapTrackerText.SetText(String.Format("Lap 0/{0}", totalLap));
+        checkpointTrackerTotalCheckpoint.Value = totalCheckpoint;
+        lapTrackerTotalLap.Value = totalLap;
     }
 
     private void Update()
@@ -57,15 +69,15 @@ public class PlayerLapTracker : MonoBehaviour
             {
                 currentCheckpoint = nextCheckpoint;
                 character.currentCheckpoint = currentCheckpoint;
-                checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
+                checkpointTrackerCurrentCheckpoint.Value = currentCheckpoint;
                 if (currentCheckpoint == totalCheckpoint && raceIsLoop)
                 {
-                    checkpointTrackerText.SetText(String.Format("Checkpoint 0/{0}",totalCheckpoint));
+                    checkpointTrackerCurrentCheckpoint.Value = 0;
                     if (currentLap + 1 == totalLap)
-                        checkpointTrackerText.SetText(String.Format("Checkpoint {0}/{1}",currentCheckpoint,totalCheckpoint));
+                        checkpointTrackerCurrentCheckpoint.Value = currentCheckpoint;
                     currentLap++;
                     character.currentLap = currentLap;
-                    lapTrackerText.SetText(String.Format("Lap {0}/{1}",currentLap, totalLap));
+                    lapTrackerCurrentLap.Value = currentLap;
                 }
             }
         }

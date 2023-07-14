@@ -58,7 +58,7 @@ public class RaceTrackManager : MonoBehaviour
         else
         {
             foreach (PlayerLapTracker plt in charactersLapTracker)
-                plt.lapTrackerText.gameObject.SetActive(false);
+                plt.lapTrackerLocalizedString.gameObject.SetActive(false);
         }
 
         foreach (SwapMovement swapMovement in charactersSwapMovements)

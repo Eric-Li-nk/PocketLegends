@@ -80,7 +80,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22332755404382208
-    m_Key: Lap
+    m_Key: LapCounter
     m_Metadata:
       m_Items: []
   - m_Id: 32785755904458752
@@ -101,6 +101,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 46248032078970880
     m_Key: Leaderboard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48063929965920256
+    m_Key: CheckpointCounter
     m_Metadata:
       m_Items: []
   m_Metadata:

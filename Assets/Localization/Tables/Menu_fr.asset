@@ -84,7 +84,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 22332755404382208
-    m_Localized: Tour {0}
+    m_Localized: Tour {currentLap}/{totalLap}
     m_Metadata:
       m_Items:
       - rid: 5629037845051342851
@@ -108,10 +108,15 @@ MonoBehaviour:
     m_Localized: Classement
     m_Metadata:
       m_Items: []
+  - m_Id: 48063929965920256
+    m_Localized: "Point de contr\xF4le {currentCheckpoint}/{totalCheckpoint}"
+    m_Metadata:
+      m_Items:
+      - rid: 5629037845051342851
   references:
     version: 2
     RefIds:
     - rid: 5629037845051342851
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e0bbd085574f00
+        m_Entries: 00e0bbd085574f0000c020c0e3c1aa00
