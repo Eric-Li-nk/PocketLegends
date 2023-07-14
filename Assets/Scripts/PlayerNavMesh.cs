@@ -20,6 +20,11 @@ public class PlayerNavMesh : MonoBehaviour
 
     private void Update()
     {
+        if (checkpointTransforms.Count == 0)
+        {
+            return;
+        }
+        
         SetDestinationToCurrentCheckpoint();
         
         // On attend que le navMeshAgent termine de trouver la route
