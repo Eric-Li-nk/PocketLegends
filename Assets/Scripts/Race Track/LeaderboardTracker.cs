@@ -28,6 +28,8 @@ public class LeaderboardTracker : MonoBehaviour
     
     public GameObject finishMenu;
     public Game gameData;
+
+    public GameObject racingTrackCamera;
     
     private void Awake()
     {
@@ -75,6 +77,7 @@ public class LeaderboardTracker : MonoBehaviour
         Cursor.visible = true;
         Time.timeScale = 0f;
         finishMenu.SetActive(true);
+        racingTrackCamera.SetActive(true);
         SaveScore();
         ShowLeaderboard();
         enabled = false;
