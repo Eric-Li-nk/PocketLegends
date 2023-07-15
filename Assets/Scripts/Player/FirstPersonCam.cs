@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class FirstPersonCam : MonoBehaviour
 {
+    public Camera mainCamera;
+    
     public float sensX;
     public float sensY;
     private float xRotation;
@@ -14,16 +16,32 @@ public class FirstPersonCam : MonoBehaviour
     
     public Transform orientation;
     public Transform playerObj;
-    
-    public float rotationSpeed;
-    
+
     private Vector2 lookInput = Vector2.zero;
+
+    private LayerMask playerLayerMask;
+
+    private void Awake()
+    {
+        playerLayerMask = gameObject.layer + 4;
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    
+
+    private void OnEnable()
+    {
+        mainCamera.cullingMask &= ~(1 << playerLayerMask);
+    }
+
+    private void OnDisable()
+    {
+        mainCamera.cullingMask |= 1 << playerLayerMask;
+    }
+
     private void Update()
     {
 
@@ -37,11 +55,7 @@ public class FirstPersonCam : MonoBehaviour
         // rotates camera and orientation of player
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-        
-        Vector3 inputDir = orientation.forward * lookInput.x + orientation.right * lookInput.y;
-
-        if (inputDir != Vector3.zero)
-            playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+        playerObj.forward = orientation.forward;
     }
     
     public void OnLook(InputAction.CallbackContext context)
