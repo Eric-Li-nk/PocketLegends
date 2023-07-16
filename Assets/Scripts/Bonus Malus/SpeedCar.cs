@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BonusBoxScript : MonoBehaviour
+public class SpeedCar : MonoBehaviour
 {
     public float speedBoostDuration = 5f; // Durée du bonus de vitesse en secondes
     public float deactivateTime = 3f; // Temps en secondes avant de désactiver la sphère bonus
