@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlowdownObjects : MonoBehaviour
+public class SlowCar : MonoBehaviour
 {
     public float timeBeforeRespawn = 5f; // Temps avant que l'objet réapparaisse en secondes
     private bool isRespawning = false; // Booléen pour savoir si l'objet est en train de réapparaître

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InverseControls : MonoBehaviour
+public class InverseCar : MonoBehaviour
 {
     public float timeBeforeEnd = 5f; // Temps avant la fin du malus en secondes
     private bool isMalusActive = false; // Booléen pour savoir si le malus est actif
