@@ -107,6 +107,10 @@ MonoBehaviour:
     m_Key: CheckpointCounter
     m_Metadata:
       m_Items: []
+  - m_Id: 49175268073136128
+    m_Key: AILevel
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
