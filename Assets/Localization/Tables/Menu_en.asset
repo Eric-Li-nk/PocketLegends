@@ -113,6 +113,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 5629037845051342856
+  - m_Id: 49175268073136128
+    m_Localized: AI Level
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

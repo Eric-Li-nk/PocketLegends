@@ -6,6 +6,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class StartMenuUIManager : UIManager
 {
 
     public TMP_Dropdown playerCountDropdown;
+    public TMP_Dropdown AILevelDropdown;
     public Transform playerNameInputFieldList;
     public Transform playerCharacterSelectionDropdownList;
 
@@ -90,12 +92,35 @@ public class StartMenuUIManager : UIManager
     private void AddAI()
     {
         int AiNumber = 1;
+        SetAILevel(AIPrefab, AILevelDropdown.value);
         for (int i = gameData.playerCount; i < 4; i++)
         {
             gameData.playerName.Add("AI " + AiNumber);
             gameData.playerScore.Add(0);
             gameData.playerPrefab.Add(AIPrefab);
             AiNumber++;
+        }
+    }
+
+    private void SetAILevel(GameObject AIPrefab, int val)
+    {
+        int AIspeedLvl1 = 5;
+        int AIspeedLvl2 = 7;
+        int AIspeedLvl3 = 9;
+
+        NavMeshAgent AINavMeshAgent = AIPrefab.GetComponent<NavMeshAgent>();
+        
+        switch (val)
+        {
+            case 0:
+                AINavMeshAgent.speed = AIspeedLvl1;
+                break;
+            case 1:
+                AINavMeshAgent.speed = AIspeedLvl2;
+                break;
+            case 2:
+                AINavMeshAgent.speed = AIspeedLvl3;
+                break;
         }
     }
 
