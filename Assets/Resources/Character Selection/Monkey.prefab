@@ -292,6 +292,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8658019958177965817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15048687565856237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98df37c6ea16e784d8ff0e1f3ad86ecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 3
+  grounded: 0
+  maxJumpCount: 2
+  jumpsRemaining: 0
 --- !u!4 &5092151044865638672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7567856778211183028, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}

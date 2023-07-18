@@ -199,6 +199,10 @@ PrefabInstance:
       value: Slope
       objectReference: {fileID: 0}
     - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1071,6 +1075,10 @@ PrefabInstance:
       value: Lane (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1166,6 +1174,10 @@ PrefabInstance:
     - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
       propertyPath: m_Name
       value: Platform (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
       propertyPath: m_NavMeshLayer
@@ -1336,6 +1348,10 @@ PrefabInstance:
     - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
       propertyPath: m_Name
       value: Lane (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1546,6 +1562,10 @@ PrefabInstance:
       value: Lane (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1610,6 +1630,10 @@ PrefabInstance:
     - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
       propertyPath: m_Name
       value: Platform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
       propertyPath: m_NavMeshLayer
@@ -1741,6 +1765,10 @@ PrefabInstance:
     - target: {fileID: 6641446628344773289, guid: c235407d87e431247bdcbf0f70e0f89b, type: 3}
       propertyPath: m_Name
       value: Turn (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641446628344773289, guid: c235407d87e431247bdcbf0f70e0f89b, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 6641446628344773289, guid: c235407d87e431247bdcbf0f70e0f89b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1965,6 +1993,10 @@ PrefabInstance:
       value: Platform (2)
       objectReference: {fileID: 0}
     - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
       propertyPath: m_NavMeshLayer
       value: 2
       objectReference: {fileID: 0}
@@ -2072,6 +2104,10 @@ PrefabInstance:
     - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
       propertyPath: m_Name
       value: Platform (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
       propertyPath: m_NavMeshLayer
@@ -2276,6 +2312,10 @@ PrefabInstance:
       value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 332258372198184271, guid: 35df5ef8c93aa9646b01f2cd2f00334b, type: 3}
       propertyPath: m_NavMeshLayer
       value: 2
       objectReference: {fileID: 0}
@@ -2436,6 +2476,10 @@ PrefabInstance:
     - target: {fileID: 6641446628344773289, guid: c235407d87e431247bdcbf0f70e0f89b, type: 3}
       propertyPath: m_Name
       value: Turn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641446628344773289, guid: c235407d87e431247bdcbf0f70e0f89b, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 6641446628344773289, guid: c235407d87e431247bdcbf0f70e0f89b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2692,6 +2736,10 @@ PrefabInstance:
     - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
       propertyPath: m_Name
       value: Lane
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 8155528871875709232, guid: f558251e46e25214db84f4bab85d236f, type: 3}
       propertyPath: m_StaticEditorFlags

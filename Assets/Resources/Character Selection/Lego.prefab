@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &947649100132548764
+--- !u!1001 &2406579029130737715
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 80927104034912b40bae5dd343cc9268, type: 3}
       propertyPath: m_Name
-      value: lego
+      value: legoOLD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80927104034912b40bae5dd343cc9268, type: 3}
@@ -130,51 +130,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6013657233058124405, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99338835
+      value: 0.99683505
       objectReference: {fileID: 0}
     - target: {fileID: 6013657233058124405, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09409345
+      value: -0.044314668
       objectReference: {fileID: 0}
     - target: {fileID: 6013657233058124405, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.062376965
+      value: -0.062593386
       objectReference: {fileID: 0}
     - target: {fileID: 6013657233058124405, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.020859927
+      value: 0.020932306
       objectReference: {fileID: 0}
     - target: {fileID: 6258839607042993338, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9165711
+      value: 0.993698
       objectReference: {fileID: 0}
     - target: {fileID: 6258839607042993338, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.04851
+      value: -0.09059921
       objectReference: {fileID: 0}
     - target: {fileID: 6258839607042993338, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.3615348
+      value: -0.063498676
       objectReference: {fileID: 0}
     - target: {fileID: 6258839607042993338, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.16381934
+      value: 0.018000375
       objectReference: {fileID: 0}
     - target: {fileID: 8701998753514083291, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9816665
+      value: 0.9998695
       objectReference: {fileID: 0}
     - target: {fileID: 8701998753514083291, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1662679
+      value: -0.016155446
       objectReference: {fileID: 0}
     - target: {fileID: 8701998753514083291, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1.1802109e-15
+      value: 1.2020956e-15
       objectReference: {fileID: 0}
     - target: {fileID: 8701998753514083291, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.093198575
+      value: 1.9422925e-17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81afcb19b4509714fb6f5fc78b17e1b4, type: 3}
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d424dfabaf07ed14eae6a5586a617f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 0}
+  cubePrefab: {fileID: 4871174750707839821, guid: 63d57839753d8324c8bd83646bf7185b, type: 3}
   placementKey: 99
   cooldownTime: 5
   cubeLifetime: 3

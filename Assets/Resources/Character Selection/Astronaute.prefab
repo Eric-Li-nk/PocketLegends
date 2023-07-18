@@ -273,6 +273,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a476543e31a6544a9afbd9acb441a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceJetpack: 2
+  forceJetpack: 10
   dureeJetpack: 3
   delaiReutilisationJetpack: 25

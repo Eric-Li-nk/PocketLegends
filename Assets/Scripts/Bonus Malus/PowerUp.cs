@@ -8,13 +8,11 @@ public class PowerUp : MonoBehaviour
     public float respawnDelay = 5f;
 
     private Vector3 initialPosition;
-    private PowerUpUI powerUpUI;
     private bool isGrowEffect; // Variable pour déterminer si le power-up doit faire grandir ou rapetisser
 
     private void Start()
     {
         initialPosition = transform.position;
-        powerUpUI = FindObjectOfType<PowerUpUI>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,9 +28,6 @@ public class PowerUp : MonoBehaviour
     {
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
-
-        powerUpUI.ChangeSprite(isGrowEffect); // Change le sprite en fonction de l'effet
-        powerUpUI.ShowImage();
 
         if (isGrowEffect)
         {
@@ -55,8 +50,6 @@ public class PowerUp : MonoBehaviour
         }
 
         StartCoroutine(Respawn());
-
-        powerUpUI.HideImage();
     }
 
     IEnumerator Respawn()

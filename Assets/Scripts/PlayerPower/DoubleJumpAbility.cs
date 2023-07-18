@@ -7,7 +7,7 @@ using System.Collections;
 public class DoubleJumpAbility : MonoBehaviour
 { 
     Rigidbody rb;
-    public float jumpHeight = 10;
+    public float jumpHeight = 4;
     public bool grounded;
     public int maxJumpCount = 2;
     public int jumpsRemaining = 0;
@@ -21,6 +21,7 @@ public class DoubleJumpAbility : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpsRemaining > 0) // appui sur la touche de saut et sauts restants
         {
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse); // code de saut ici
             jumpsRemaining -= 1;
         }

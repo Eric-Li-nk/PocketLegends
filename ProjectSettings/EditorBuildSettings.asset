@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Car.unity
     guid: 69ec3865f252c084e878b8b243b72a2d
+  - enabled: 1
+    path: Assets/Scenes/Zigzag.unity
+    guid: 7028c8d806fe96c43a5a3c11ab86770b
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 811fea4669372fe4fa058494b259e704, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 3bbadb5e738c089438bbf9d93d732ddc, type: 2}
