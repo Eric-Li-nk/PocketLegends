@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98df37c6ea16e784d8ff0e1f3ad86ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 3
+  jumpHeight: 4
   grounded: 0
   maxJumpCount: 2
   jumpsRemaining: 0
