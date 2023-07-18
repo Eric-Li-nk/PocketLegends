@@ -1263,7 +1263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &630517427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2061,7 +2061,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_text
-      value: Placeholder
+      value: Castle
       objectReference: {fileID: 0}
     - target: {fileID: 314515796196659100, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_fontSize
@@ -2154,6 +2154,30 @@ PrefabInstance:
     - target: {fileID: 314515797059430726, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 578341914}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickRaceTrack
+      objectReference: {fileID: 0}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StartMenuUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1289494761}
+    - target: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
@@ -2421,6 +2445,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1289494761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 314515797059430727, guid: d15c6d8fad360f6448310c70d2bdfb6b, type: 3}
+  m_PrefabInstance: {fileID: 1073475671}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1326815830 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4723395780657842706, guid: 2b86c9ceb319e1b4381cf43cd6950520, type: 3}
@@ -3206,7 +3241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_AnchorMin.x
@@ -3214,7 +3249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3254,11 +3289,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 330.00003
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3687,7 +3722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_AnchorMin.x
@@ -3695,7 +3730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3735,11 +3770,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 990.0001
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 3793650745298059121, guid: ac20566f8affacf489fbdd0f462d2a37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3926,7 +3961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1900873229
 RectTransform:
   m_ObjectHideFlags: 0

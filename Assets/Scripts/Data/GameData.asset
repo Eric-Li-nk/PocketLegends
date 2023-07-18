@@ -15,9 +15,19 @@ MonoBehaviour:
   playerCount: 1
   playerName:
   - Player 1
+  - AI 1
+  - AI 2
+  - AI 3
   playerPrefab:
   - {fileID: 6531932350781684865, guid: 2c7d7415e8640ed47bf43853e495879d, type: 3}
+<<<<<<< Updated upstream
   playerScore: 00000000
+=======
+  - {fileID: 6071147412947642005, guid: 08655e11d86a5dc48bd21795b02781c2, type: 3}
+  - {fileID: 6071147412947642005, guid: 08655e11d86a5dc48bd21795b02781c2, type: 3}
+  - {fileID: 6071147412947642005, guid: 08655e11d86a5dc48bd21795b02781c2, type: 3}
+  playerScore: 04000000030000000100000002000000
+>>>>>>> Stashed changes
   currentRaceTrackIndex: 0
   raceTrackList:
-  - Game
+  - Loop

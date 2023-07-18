@@ -12,11 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Platformer.unity
     guid: ebd73bc61d33ddc41aa2f3c3347cf6dc
   - enabled: 1
-    path: Assets/Scenes/Car.unity
+    path: Assets/Scenes/Castle.unity
     guid: 166cc56aad228f1498013831364a2161
   - enabled: 1
     path: Assets/Scenes/Loop.unity
     guid: 225bb5db3cd0ac34193d22fb0db5d12f
+  - enabled: 1
+    path: Assets/Scenes/Car.unity
+    guid: 69ec3865f252c084e878b8b243b72a2d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 811fea4669372fe4fa058494b259e704, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 3bbadb5e738c089438bbf9d93d732ddc, type: 2}
