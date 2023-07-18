@@ -74,6 +74,7 @@ public class SwapMovement : MonoBehaviour
         vehicleMovement.enabled = true;
         playerGameObject.SetActive(false);
         playerCamera.SetActive(false);
+        transform.rotation = playerGameObject.transform.rotation;
         carGameObject.SetActive(true);
         carCamera.SetActive(true);
     }

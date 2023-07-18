@@ -82,16 +82,30 @@ public class PlayerLapTracker : MonoBehaviour
             }
         }
         // Resets the position of the player if he is out of bounds to the last checkpoint
-        else if(other.gameObject.layer == outOfBound)
+        else if (other.gameObject.layer == outOfBound)
+        {
+            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
             OutOfBounds();
+        }
+            
     }
 
     private void OutOfBounds()
     {
+        Transform respawnTransform;
         if (currentCheckpoint == 0 && currentLap == 0)
-            transform.position = GameObject.Find("Spawn").transform.position;
+        {
+            respawnTransform = GameObject.Find("Spawn").transform;
+            transform.position = respawnTransform.position;
+        }
         else
-            transform.position = GameObject.Find("Checkpoints").transform.Find(currentCheckpoint.ToString()).position;
+        {
+            respawnTransform = GameObject.Find("Checkpoints").transform.Find(currentCheckpoint.ToString());
+            transform.position = respawnTransform.position;
+        }
+
+        transform.forward = respawnTransform.forward;
+        transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x,transform.rotation.y+90,0));
     }
 
     private int GetNextCheckpoint()
