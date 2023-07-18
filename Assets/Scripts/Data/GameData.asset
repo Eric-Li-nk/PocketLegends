@@ -16,7 +16,7 @@ MonoBehaviour:
   playerName:
   - Player 1
   playerPrefab:
-  - {fileID: 15048687565856237, guid: 3b68993719f8b7d408adcc9352d39c45, type: 3}
+  - {fileID: 6531932350781684865, guid: 2c7d7415e8640ed47bf43853e495879d, type: 3}
   playerScore: 00000000
   currentRaceTrackIndex: 0
   raceTrackList:
